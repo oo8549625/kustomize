@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wordpress-php-options
+data:
+  php.ini: |
+    upload_max_filesize = 4M
+    post_max_size = 8M
+    memory_limit = 128M
+    max_execution_time = 30
+    max_input_time = 60

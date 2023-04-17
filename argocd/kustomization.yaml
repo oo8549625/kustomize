@@ -1,0 +1,4 @@
+resources:
+  - argocd-deployment.yaml
+patchesStrategicMerge:
+  - argocd-cmd-params-cm.yaml

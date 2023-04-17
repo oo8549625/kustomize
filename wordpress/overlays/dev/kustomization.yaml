@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- wordpress-ingress.yaml
+- ../../base
+patches:
+- path: set-mysql-pvc.yaml
+- path: set-wordpress-pvc.yaml
+- path: set-wordpress-configmap.yaml
+- path: set-wordpress-deployment.yaml

@@ -10,7 +10,7 @@ spec:
   selector:
     app: wordpress
     tier: frontend
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -32,6 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -61,7 +62,13 @@ spec:
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html
+        - name: wordpress-php-config
+          mountPath: /usr/local/etc/php/conf.d/php.ini
+          subPath: php.ini
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
+      - name: wordpress-php-config
+        configMap:
+          name: wordpress-php-options
