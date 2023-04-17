@@ -7,5 +7,5 @@ data:
     upload_max_filesize = 17M
     post_max_size = 34M
     memory_limit = 128M
-    max_execution_time = 30
-    max_input_time = 60
+    max_execution_time = 45
+    max_input_time = 90
