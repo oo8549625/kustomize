@@ -8,4 +8,4 @@ patches:
 - path: patch-wordpress-pvc.yaml
 - path: patch-wordpress-configmap.yaml
 - path: patch-wordpress-deployment.yaml
-nameSuffix: -dev
+#nameSuffix: -dev
