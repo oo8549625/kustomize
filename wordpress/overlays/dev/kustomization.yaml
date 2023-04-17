@@ -4,7 +4,8 @@ resources:
 - wordpress-ingress.yaml
 - ../../base
 patches:
-- path: set-mysql-pvc.yaml
-- path: set-wordpress-pvc.yaml
-- path: set-wordpress-configmap.yaml
-- path: set-wordpress-deployment.yaml
+- path: patch-mysql-pvc.yaml
+- path: patch-wordpress-pvc.yaml
+- path: patch-wordpress-configmap.yaml
+- path: patch-wordpress-deployment.yaml
+nameSuffix: -dev
