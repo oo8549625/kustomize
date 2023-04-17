@@ -4,8 +4,8 @@ metadata:
   name: wordpress-php-options
 data:
   php.ini: |
-    upload_max_filesize = 16M
-    post_max_size = 32M
+    upload_max_filesize = 17M
+    post_max_size = 34M
     memory_limit = 128M
     max_execution_time = 30
     max_input_time = 60
