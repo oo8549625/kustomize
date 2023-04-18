@@ -64,6 +64,7 @@ spec:
           mountPath: /var/www/html
         - name: wordpress-php-config
           mountPath: /usr/local/etc/php/conf.d/php.ini
+          subPath: php.ini
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
