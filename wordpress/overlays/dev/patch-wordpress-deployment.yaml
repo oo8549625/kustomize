@@ -20,7 +20,3 @@ spec:
         volumeMounts:
         - name: wordpress-php-config
           mountPath: /usr/local/etc/php/conf.d/php.ini
-          $patch: delete
-        - name: wordpress-php-config
-          mountPath: /usr/local/etc/php/conf.d/php
-          readOnly: true
