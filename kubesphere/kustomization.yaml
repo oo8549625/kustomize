@@ -1,0 +1,3 @@
+resources:
+  - cluster-configuration.yaml
+  - kubesphere-installer.yaml
