@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluent-bit
+  labels:
+    k8s-app: fluent-bit-logging
+spec:
+  clusterIP: None
+  ports:
+    - name: http-metrics
+      port: 2020
+      protocol: TCP
+      targetPort: 2020
+  type: ClusterIP
+  selector:
+    k8s-app: fluent-bit-logging
