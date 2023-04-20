@@ -1,0 +1,3 @@
+resources:
+  - elasticsearch-deployment.yaml
+  - kubana-deployment.yaml
