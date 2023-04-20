@@ -10,6 +10,8 @@ spec:
       spec: {}
     tls:
       certificate: {}
+      selfSignedCertificate:
+        disabled: true
   monitoring:
     logs: {}
     metrics: {}
