@@ -57,6 +57,8 @@ data:
         tls.verify      Off
         Replace_Dots    On
         Retry_Limit     False
+        Index           test
+        Type            _doc
 
   parsers.conf: |
     [PARSER]
