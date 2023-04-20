@@ -32,7 +32,7 @@ spec:
           value: "elasticsearch-es-http"
         - name: FLUENT_ELASTICSEARCH_PORT
           value: "9200"
-        - name: FLUENT_ELASTICSEARCH_USRE
+        - name: FLUENT_ELASTICSEARCH_USER
           value: "elastic"
         - name: FLUENT_ELASTICSEARCH_PASSWORD
           value: "l1kM8h8pVR2WU088G41sfR0Y"
