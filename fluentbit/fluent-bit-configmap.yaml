@@ -48,9 +48,10 @@ data:
     
     [FILTER]
         Name                parser
-        Match               kube.*.apisix.apisix
+        Match               kube.*.apisix.apisix.*
         Key_Name            log
         Parser              nginx
+        Reserve_Data        On
 
   output-elasticsearch.conf: |
     [OUTPUT]
