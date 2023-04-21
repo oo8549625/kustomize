@@ -9,7 +9,7 @@ data:
   # ======================================================
   fluent-bit.conf: |
     [SERVICE]
-        Flush         1
+        Flush         5
         Log_Level     info
         Daemon        off
         Parsers_File  parsers.conf
@@ -45,6 +45,12 @@ data:
         K8S-Logging.Parser  On
         K8S-Logging.Exclude Off
         Regex_Parser        kube-custom
+    
+    [FILTER]
+        Name                Parser
+        Match               kube.apisix.*.apisix
+        Key_Name            log
+        Parser              nginx
 
   output-elasticsearch.conf: |
     [OUTPUT]
@@ -53,6 +59,7 @@ data:
         Host            ${FLUENT_ELASTICSEARCH_HOST}
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Logstash_Format On
+        Logstash_Prefix logstash
         Replace_Dots    On
         Retry_Limit     False
         HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
