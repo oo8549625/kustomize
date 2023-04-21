@@ -57,12 +57,11 @@ data:
         tls.verify      Off
         Replace_Dots    On
         Retry_Limit     False
-        Index           fluent-bit
-        Type            _doc
         Logstash_Format On
         Logstash_Prefix logstash
         Logstash_DateFormat %Y.%m.%d
         Time_Key timestamp
+        Suppress_Type_Name On
 
   parsers.conf: |
     [PARSER]
