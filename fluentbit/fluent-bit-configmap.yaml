@@ -51,18 +51,14 @@ data:
         Match           *
         Host            ${FLUENT_ELASTICSEARCH_HOST}
         Port            ${FLUENT_ELASTICSEARCH_PORT}
+        Logstash_Format On
+        Replace_Dots    On
+        Retry_Limit     False
         HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
         HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
         tls             On
         tls.verify      Off
-        Replace_Dots    On
-        Retry_Limit     False
-        Logstash_Format On
-        Logstash_Prefix logstash
-        Logstash_DateFormat %Y.%m.%d
-        Time_Key timestamp
         Suppress_Type_Name On
-
   parsers.conf: |
     [PARSER]
         Name   apache

@@ -35,7 +35,7 @@ spec:
         - name: FLUENT_ELASTICSEARCH_USER
           value: "elastic"
         - name: FLUENT_ELASTICSEARCH_PASSWORD
-          value: "l1kM8h8pVR2WU088G41sfR0Y"
+          value: "10i6Dx8K8v69n5Cs1Yp3MqjR"
         volumeMounts:
         - name: varlog
           mountPath: /var/log
