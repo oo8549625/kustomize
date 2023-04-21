@@ -48,7 +48,7 @@ data:
     
     [FILTER]
         Name                Parser
-        Match               kube.apisix.*.apisix
+        Match               kube.*.apisix.apisix
         Key_Name            log
         Parser              nginx
 
