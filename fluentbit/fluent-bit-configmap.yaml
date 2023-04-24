@@ -50,8 +50,6 @@ data:
         Match               kube.var.log.containers.apisix-*_apisix_apisix*
         Key_Name            log
         Parser              apisix
-        Reserve_Data        On
-        Preserve_Key        On
 
   output-elasticsearch.conf: |
     [OUTPUT]
