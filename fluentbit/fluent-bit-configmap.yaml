@@ -47,7 +47,7 @@ data:
     
     [FILTER]
         Name                parser
-        Match               apisix-*_apisix_apisix*
+        Match               kube.var.log.containers.apisix-*_apisix_apisix*
         Key_Name            log
         Parser              apisix
         Reserve_Data        On
@@ -61,6 +61,21 @@ data:
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Logstash_Format On
         Logstash_Prefix fluentbit
+        Replace_Dots    On
+        Retry_Limit     False
+        HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
+        HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
+        tls             On
+        tls.verify      Off
+        Suppress_Type_Name On
+    
+    [OUTPUT]
+        Name            es
+        Match           kube.var.log.containers.apisix-*_apisix_apisix*
+        Host            ${FLUENT_ELASTICSEARCH_HOST}
+        Port            ${FLUENT_ELASTICSEARCH_PORT}
+        Logstash_Format On
+        Logstash_Prefix apisix
         Replace_Dots    On
         Retry_Limit     False
         HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
