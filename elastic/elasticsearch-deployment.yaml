@@ -18,7 +18,7 @@ spec:
   nodeSets:
     - config:
         node.store.allow_mmap: false
-      count: 2
+      count: 3
       name: default
       podTemplate:
         metadata:
