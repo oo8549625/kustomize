@@ -1,7 +1,3 @@
 resources:
-  - fluent-bit-ds.yaml
-  - fluent-bit-configmap.yaml
-  - fluent-bit-role-binding.yaml
-  - fluent-bit-role.yaml
-  - fluent-bit-service-account.yaml
-  - fluent-bit-service.yaml
+  - logstash-deployment.yaml
+  - logstash-configmap.yaml
