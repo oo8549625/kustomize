@@ -33,25 +33,12 @@ data:
         port => 5044
       }
     }
-    filter {
-      json {
-        source => "message"
-      }
-      prune {
-        whitelist_names => [ "msg" ]
-      }
-      mutate {
-        rename => { "msg" => "message" }
-      }
-    }
     output {
-      if [message]  =~ "admission" {
-        elasticsearch {
-          index => "logstashadmission-%{+YYYY.MM.dd}"
-          hosts => [ "${ES_HOSTS}" ]
-          user => "${ES_USER}"
-          password => "${ES_PASSWORD}"
-          cacert => '/etc/logstash/certificates/ca.crt'
-        }
+      elasticsearch {
+        index => "logstash-%{+YYYY.MM.dd}"
+        hosts => [ "${ES_HOSTS}" ]
+        user => "${ES_USER}"
+        password => "${ES_PASSWORD}"
+        cacert => '/etc/logstash/certificates/ca.crt'
       }
     }
