@@ -59,7 +59,6 @@ data:
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Logstash_Format On
         Logstash_Prefix fluentbit
-        Replace_Dots    On
         Retry_Limit     False
         HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
         HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
@@ -74,7 +73,6 @@ data:
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Logstash_Format On
         Logstash_Prefix apisix
-        Replace_Dots    On
         Retry_Limit     False
         HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
         HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
