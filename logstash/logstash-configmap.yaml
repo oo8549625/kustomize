@@ -44,7 +44,7 @@ data:
     }
     output {
       elasticsearch {
-        index => "[@metadata][target_index]"
+        index => "%{[@metadata][target_index]}"
         hosts => [ "${ES_HOSTS}" ]
         user => "${ES_USER}"
         password => "${ES_PASSWORD}"
@@ -52,7 +52,7 @@ data:
       }
       
       elasticsearch {
-          index => "[@metadata][target_index]"
+          index => "%{[@metadata][target_index]}"
           hosts => [ "${ES_HOSTS}" ]
           user => "${ES_USER}"
           password => "${ES_PASSWORD}"
