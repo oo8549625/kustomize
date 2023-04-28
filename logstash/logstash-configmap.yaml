@@ -49,17 +49,15 @@ data:
             "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" 
           } 
         }
+      } else {
+        mutate { 
+          add_field => { 
+            "[@metadata][target_index]" => "logstash-%{+YYYY.MM.dd}" 
+          } 
+        }
       }
     }
     output {
-      elasticsearch {
-        index => "logstash-%{+YYYY.MM.dd}"
-        hosts => [ "${ES_HOSTS}" ]
-        user => "${ES_USER}"
-        password => "${ES_PASSWORD}"
-        cacert => '/etc/logstash/certificates/ca.crt'
-      }
-
       elasticsearch {
         index => "%{[@metadata][target_index]}"
         hosts => [ "${ES_HOSTS}" ]
