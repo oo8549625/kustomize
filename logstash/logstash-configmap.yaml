@@ -51,4 +51,11 @@ data:
         password => "${ES_PASSWORD}"
         cacert => '/etc/logstash/certificates/ca.crt'
       }
+      if [log][file][path] =~ "/var/log/containers/apisix-*_apisix_apisix-*" {
+        index => "logstashapisix-%{+YYYY.MM.dd}"
+        hosts => [ "${ES_HOSTS}" ]
+        user => "${ES_USER}"
+        password => "${ES_PASSWORD}"
+        cacert => '/etc/logstash/certificates/ca.crt'
+      }
     }
