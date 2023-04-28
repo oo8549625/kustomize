@@ -36,10 +36,15 @@ data:
       if [log][file][path] =~ /\/var\/log\/containers\/apisix-.*_apisix_apisix-.*.log$/ {
         grok {
           match => { "message" => "%{IP:remote} %{DATA:host} %{USERNAME:user} \[%{HTTPDATE:time}\] %{HOSTNAME:http_host} \"%{WORD:method} %{URIPATHPARAM:path} HTTP/.+\" %{NUMBER:code} %{NUMBER:size} %{NUMBER:request_time} \"%{DATA:referrer}\" \"%{DATA:agent}\" %{DATA:upstream_addr} %{NUMBER:upstream_status} %{NUMBER:upstream_response_time} \"%{DATA:upstream_http_referer}\"" }
+          named_captures_only => "true"
         }
-        mutate { add_field => { "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" } }
+        mutate { 
+          add_field => { "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" } 
+        }
       } else {
-        mutate { add_field => { "[@metadata][target_index]" => "logstash-%{+YYYY.MM.dd}" } }
+        mutate { 
+          add_field => { "[@metadata][target_index]" => "logstash-%{+YYYY.MM.dd}" } 
+        }
       }
     }
     output {
