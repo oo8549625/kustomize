@@ -138,6 +138,6 @@ data:
     [PARSER]
         Name        apisix
         Format      regex
-        Regex       ^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] (?<http_host>[^ ]*) "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*) (?<request_time>[^ ]*) "(?<referer>[^\"]*)" "(?<agent>[^\"]*)" (?<upstream_addr>[^ ]*) (?<upstream_status>[^ ]*) (?<upstream_response_time>[^ ]*) "(?<upstream_scheme>[^:]*)\:\/\/(?<upstream_host>[^\"]*)"
+        Regex       ^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] (?<http_host>[^ ]*) "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*) (?<request_time>[^ ]*) "(?<referer>[^\"]*)" "(?<agent>[^\"]*)" (?<upstream_addr>[^ ]*) (?<upstream_status>[^ ]*) (?<upstream_response_time>[^ ]*) "(?<upstream_http_referer>[^"]*)"
         Time_key    time
         Time_Format %d/%b/%Y:%H:%M:%S %z
