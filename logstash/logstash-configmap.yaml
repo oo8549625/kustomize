@@ -49,7 +49,7 @@ data:
       }
       if [log][file][path] =~ "/var/log/containers/apisix-*_apisix_apisix-*" {
         elasticsearch {
-          index => "logstashapisix-%{+YYYY.MM.dd}"
+          index => "nginx_access_logstash-%{+YYYY.MM.dd}"
           hosts => [ "${ES_HOSTS}" ]
           user => "${ES_USER}"
           password => "${ES_PASSWORD}"
