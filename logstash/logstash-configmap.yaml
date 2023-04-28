@@ -18,7 +18,6 @@ data:
     logger.logstashpipeline.level = error
  
 ---
- 
 apiVersion: v1
 kind: ConfigMap
 metadata:
