@@ -46,7 +46,7 @@ data:
           target => "@timestamp"
         }
         prune {
-          whitelist_names => [ "remote", "host", "user", "http_host", "method", "path", "code", "size", "request_time", "referrer", "agent", "upstream_addr", "upstream_status", "upstream_response_time", "upstream_http_referer" ]
+          whitelist_names => [ "@timestamp", "remote", "host", "user", "http_host", "method", "path", "code", "size", "request_time", "referrer", "agent", "upstream_addr", "upstream_status", "upstream_response_time", "upstream_http_referer" ]
         }
         mutate { 
           add_field => { 
