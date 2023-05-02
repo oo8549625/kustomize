@@ -50,7 +50,7 @@ data:
         }
         mutate { 
           add_field => { 
-            "[@metadata][target_index]" => "test-nginx-access-logstash-%{+YYYY.MM.dd}" 
+            "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" 
           } 
         }
       } else {
