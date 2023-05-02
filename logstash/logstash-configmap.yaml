@@ -41,12 +41,15 @@ data:
           named_captures_only => "true"
           overwrite => [ "agent", "host" ]
         }
+        date {
+          match => [ "time", "dd/MMM/yyyy:HH:mm:ss Z" ]
+        }
         prune {
-          whitelist_names => [ "remote", "host", "user", "@timestamp", "http_host", "method", "path", "code", "size", "request_time", "referrer", "agent", "upstream_addr", "upstream_status", "upstream_response_time", "upstream_http_referer" ]
+          whitelist_names => [ "time", "remote", "host", "user", "@timestamp", "http_host", "method", "path", "code", "size", "request_time", "referrer", "agent", "upstream_addr", "upstream_status", "upstream_response_time", "upstream_http_referer" ]
         }
         mutate { 
           add_field => { 
-            "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" 
+            "[@metadata][target_index]" => "test-nginx-access-logstash-%{+YYYY.MM.dd}" 
           } 
         }
       } else {
