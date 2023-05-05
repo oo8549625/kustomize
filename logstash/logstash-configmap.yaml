@@ -67,7 +67,6 @@ data:
         hosts => [ "${ES_HOSTS}" ]
         user => "${ES_USER}"
         password => "${ES_PASSWORD}"
-        pipeline => "geoip"
         cacert => '/etc/logstash/certificates/ca.crt'
       }
     }
