@@ -50,13 +50,15 @@ data:
         }
         mutate { 
           add_field => { 
-            "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}" 
+            "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}"
+            "[@metadata][target_lifecycle_policy]" => "nginx-access-policy"
           } 
         }
       } else {
         mutate { 
           add_field => { 
             "[@metadata][target_index]" => "logstash-%{+YYYY.MM.dd}" 
+            "[@metadata][target_lifecycle_policy]" => "logstash-policy"
           } 
         }
       }
@@ -64,6 +66,8 @@ data:
     output {
       elasticsearch {
         index => "%{[@metadata][target_index]}"
+        ilm_policy => "%{[@metadata][target_lifecycle_policy]}"
+        action => "create"
         hosts => [ "${ES_HOSTS}" ]
         user => "${ES_USER}"
         password => "${ES_PASSWORD}"
