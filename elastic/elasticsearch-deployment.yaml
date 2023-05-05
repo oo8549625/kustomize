@@ -11,7 +11,7 @@ spec:
     tls:
       certificate: {}
       selfSignedCertificate:
-        disabled: false
+        disabled: true
   monitoring:
     logs: {}
     metrics: {}
