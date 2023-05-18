@@ -9,4 +9,4 @@ spec:
   - route:
     - destination:
         host: nginx-service.default.svc.cluster.local
-        subset: v1
+        subset: v2
