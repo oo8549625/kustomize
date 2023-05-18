@@ -2,10 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment-v2
-  labels:
-    app: nginx
-    version: v2
-    sidecar.istio.io/inject: "true"
 spec:
   replicas: 1
   selector:
@@ -17,6 +13,8 @@ spec:
       labels:
         app: nginx
         version: v2
+      annotations:
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
         - name: nginx
