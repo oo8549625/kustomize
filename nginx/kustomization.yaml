@@ -1,0 +1,4 @@
+resources:
+  - nginx-v1-deployment.yaml
+  - nginx-v2-deployment.yaml
+  - nginx-service.yaml
