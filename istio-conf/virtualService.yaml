@@ -6,7 +6,8 @@ spec:
   hosts:
   - nginx.default.svc.cluster.local
   http:
-  - match:
+  - name: nginx-v1-route
+    match:
     - headers:
         version:
           exact: v1
@@ -14,7 +15,8 @@ spec:
     - destination:
         host: nginx.default.svc.cluster.local
         subset: v1
-  - route:
+  - name: nginx-v2-route
+    route:
     - destination:
         host: nginx.default.svc.cluster.local
         subset: v2
