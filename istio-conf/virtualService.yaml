@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: nginx-route
+spec:
+  hosts:
+  - nginx.default.svc.cluster.local
+  http:
+  - match:
+    - headers:
+        version:
+          exact: v1
+    route:
+    - destination:
+        host: nginx.default.svc.cluster.local
+        subset: v1
+  - route:
+    - destination:
+        host: nginx.default.svc.cluster.local
+        subset: v2
