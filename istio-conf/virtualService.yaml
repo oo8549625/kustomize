@@ -6,17 +6,12 @@ spec:
   hosts:
   - nginx-service.default.svc.cluster.local
   http:
-  - name: nginx-v1-route
-    match:
-    - headers:
-        version:
-          exact: v1
-    route:
+  - route:
     - destination:
         host: nginx-service.default.svc.cluster.local
         subset: v1
-  - name: nginx-v2-route
-    route:
+      weight: 100
     - destination:
         host: nginx-service.default.svc.cluster.local
         subset: v2
+      weight: 0
