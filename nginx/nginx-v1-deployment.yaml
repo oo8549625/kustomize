@@ -33,10 +33,10 @@ spec:
       initContainers:
         - name: install-net-tools
           image: debian:latest
-          command: ['sh', '-c', 'apt-get update && apt-get install -y net-tools']
+          command: ['sh', '-c', 'apt-get update && apt-get install -y net-tools && which netstat']
           volumeMounts:
           - name: tool-volume
-            mountPath: /bin
+            mountPath: /tools
       volumes:
         - name: nginx-conf
           configMap:
