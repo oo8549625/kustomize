@@ -29,7 +29,8 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
             - name: tool-volume
-              mountPath: /tools
+              mountPath: /bin/netstat
+              subPath: netstat
       initContainers:
         - name: install-net-tools
           image: debian:latest
