@@ -30,8 +30,8 @@ spec:
               subPath: nginx.conf
       initContainers:
         - name: install-net-tools
-          image: busybox
-          command: ['sh', '-c', 'apk add --no-cache net-tools']
+          image: debian:latest
+          command: ['sh', '-c', 'apt-get update && apt-get install -y net-tools']
       volumes:
         - name: nginx-conf
           configMap:
