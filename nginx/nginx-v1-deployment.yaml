@@ -33,7 +33,7 @@ spec:
       initContainers:
         - name: install-net-tools
           image: debian:latest
-          command: ['sh', '-c', 'apt-get update && apt-get install -y net-tools && which netstat']
+          command: ['sh', '-c', 'apt-get update && apt-get install -y net-tools']
           volumeMounts:
           - name: tool-volume
             mountPath: /bin
