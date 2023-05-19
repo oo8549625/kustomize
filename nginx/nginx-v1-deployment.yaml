@@ -28,6 +28,12 @@ spec:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+      initContainers:
+        - name: init-myservice
+          image: nginx:latest
+          command:
+            - apt update
+            - apt install net-tools
       volumes:
         - name: nginx-conf
           configMap:
