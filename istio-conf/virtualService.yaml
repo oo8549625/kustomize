@@ -4,7 +4,7 @@ metadata:
   name: productpage
 spec:
   hosts:
-  - productpage
+  - "*"
   gateways:
   - bookinfo-gateway
   http:
