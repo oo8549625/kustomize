@@ -17,7 +17,7 @@ metadata:
   name: reviews
 spec:
   hosts:
-  - reviews
+  - reviews.default
   http:
   - match:
     - headers:
