@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: bookinfo-gateway
+  name: istio-sample-gateway
 spec:
   selector:
     istio: ingress # use istio default controller
@@ -11,4 +11,5 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "default/istio-sample.test.miyo"
+---
