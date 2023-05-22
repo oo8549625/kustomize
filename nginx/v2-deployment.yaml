@@ -17,6 +17,7 @@ spec:
         app: nginx
         version: v2
     spec:
+      serviceAccountName: nginx
       containers:
         - name: nginx
           image: nginx:latest
