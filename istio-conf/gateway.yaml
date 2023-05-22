@@ -11,5 +11,5 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "default/istio-sample.test.miyo"
+    - istio-sample.test.miyo
 ---

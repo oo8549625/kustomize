@@ -4,7 +4,7 @@ metadata:
   name: productpage
 spec:
   hosts:
-  - "istio-sample.test.miyo"
+  - istio-sample.test.miyo
   gateways:
   - bookinfo-gateway
   http:
