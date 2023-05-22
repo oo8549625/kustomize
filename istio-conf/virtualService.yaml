@@ -64,10 +64,10 @@ metadata:
   name: nginx
 spec:
   hosts:
-    - nginx
+  - nginx
   http:
   - route:
-      - destination:
-          host: nginx
-          subset: v2
+    - destination:
+        host: nginx
+        subset: v2
 ---
