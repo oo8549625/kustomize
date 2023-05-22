@@ -6,4 +6,8 @@ resources:
 configMapGenerator:
   - files:
       - configs/nginx.conf
-    name: nginx-configmap
+    name: nginx-config-configmap
+  - files:
+      - configs/index-v1.html
+      - configs/index-v2.html
+    name: nginx-html-configmap

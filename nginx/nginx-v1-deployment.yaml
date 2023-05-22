@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment-v1
+  name: nginx-v1
 spec:
   replicas: 1
   selector:
@@ -27,7 +27,13 @@ spec:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+            - name: nginx-html
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index-v1.html
       volumes:
         - name: nginx-conf
           configMap:
-            name: nginx-configmap
+            name: nginx-config-configmap
+        - name: nginx-html
+          configMap:
+            name: nginx-html-configmap
