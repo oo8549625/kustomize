@@ -58,3 +58,16 @@ spec:
         host: details
         subset: v1
 ---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: nginx
+spec:
+  hosts:
+    - nginx.default.svc.cluster.local
+  http:
+  - route:
+      - destination:
+          host: nginx.default.svc.cluster.local
+          subset: v2
+---
