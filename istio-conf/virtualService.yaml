@@ -5,6 +5,8 @@ metadata:
 spec:
   hosts:
   - productpage
+  gateways:
+  - bookinfo-gateway
   http:
   - route:
     - destination:
