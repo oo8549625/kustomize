@@ -33,6 +33,8 @@ spec:
             - name: nginx-html
               mountPath: /usr/share/nginx/html/index.html
               subPath: index-v1.html
+          securityContext:
+            runAsUser: 1000
       volumes:
         - name: nginx-conf
           configMap:

@@ -2,6 +2,7 @@ resources:
   - v1-deployment.yaml
   - v2-deployment.yaml
   - service.yaml
+  - serviceaccount.yaml
 
 configMapGenerator:
   - files:
