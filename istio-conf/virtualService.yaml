@@ -17,7 +17,7 @@ metadata:
   name: reviews
 spec:
   hosts:
-  - reviews.default
+  - reviews
   http:
   - match:
     - headers:
@@ -64,10 +64,10 @@ metadata:
   name: nginx
 spec:
   hosts:
-    - nginx.default.svc.cluster.local
+    - nginx
   http:
   - route:
       - destination:
-          host: nginx.default.svc.cluster.local
+          host: nginx
           subset: v2
 ---
