@@ -70,13 +70,15 @@ spec:
   gateways:
   - istio-sample-gateway
   http:
-  - route:
+  - match:
+      uri:
+        exact: "/test"
+    route:
     - destination:
         host: nginx
         subset: v1
-      weight: 70
+  - route:
     - destination:
         host: nginx
         subset: v2
-      weight: 30
 ---
