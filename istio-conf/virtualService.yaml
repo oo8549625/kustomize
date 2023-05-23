@@ -71,7 +71,7 @@ spec:
   - istio-sample-gateway
   http:
   - match:
-      uri:
+    - uri:
         exact: "/test"
     route:
     - destination:
