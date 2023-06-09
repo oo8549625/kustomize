@@ -177,9 +177,9 @@ spec:
             - name: "GF_AUTH_BASIC_ENABLED"
               value: "false"
             - name: "GF_SECURITY_ADMIN_PASSWORD"
-              value: "-"
+              value: "88ke4o@AtDk!Pj$K"
             - name: "GF_SECURITY_ADMIN_USER"
-              value: "-"
+              value: "admin"
           livenessProbe:
             failureThreshold: 10
             httpGet:
