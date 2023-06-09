@@ -40,6 +40,8 @@ data:
     provisioning = /etc/grafana/provisioning
     [security]
     allow_embedding	= true
+    [auth.anonymous]
+    enabled = true
 
   datasources.yaml: |
     apiVersion: 1
