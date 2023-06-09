@@ -38,6 +38,8 @@ data:
     logs = /var/log/grafana
     plugins = /var/lib/grafana/plugins
     provisioning = /etc/grafana/provisioning
+    [security]
+    allow_embedding	= true
 
   datasources.yaml: |
     apiVersion: 1
