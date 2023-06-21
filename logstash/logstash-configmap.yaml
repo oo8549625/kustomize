@@ -64,7 +64,6 @@ data:
     output {
       if [@metadata][target_index] == "nginx-access-logstash" {
         elasticsearch {
-          index => "nbcdn_access-%{+YYYY.MM.dd}"
           template_name => "template-nbcdn_access"
           ilm_enabled => "true"
           ilm_rollover_alias => "nbcdn_access"
@@ -78,7 +77,6 @@ data:
       }
       if [@metadata][target_index] == "logstash" {
         elasticsearch {
-          index => "logstash-%{+YYYY.MM.dd}"
           template_name => "logstash"
           ilm_enabled => "true"
           ilm_rollover_alias => "logstash"
