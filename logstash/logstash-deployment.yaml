@@ -27,12 +27,9 @@ spec:
             - name: ES_HOSTS
               value: "https://elasticsearch-es-http.monitoring:9200"
             - name: ES_USER
-              value: "elastic"
+              value: "logstash_writer"
             - name: ES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: elasticsearch-es-elastic-user
-                  key: elastic
+              value: "@s6ohp$DAAapnPAX"
           volumeMounts:
             - name: config-volume
               mountPath: /usr/share/logstash/config
@@ -41,6 +38,10 @@ spec:
             - name: ca-certs
               mountPath: /etc/logstash/certificates
               readOnly: true
+          resources: 
+            limits: 
+              cpu: 4
+              memory: 4Gi
       volumes:
         - name: config-volume
           configMap:
