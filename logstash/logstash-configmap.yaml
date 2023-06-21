@@ -50,14 +50,14 @@ data:
         }
         mutate { 
           add_field => { 
-            "[@metadata][target_index]" => "nginx-access-logstash-%{+YYYY.MM.dd}"
+            "[@metadata][target_index]" => "nginx-access-logstash"
             "[@metadata][target_lifecycle_policy]" => "nginx-access-policy"
           } 
         }
       } else {
         mutate { 
           add_field => { 
-            "[@metadata][target_index]" => "logstash-%{+YYYY.MM.dd}" 
+            "[@metadata][target_index]" => "logstash" 
             "[@metadata][target_lifecycle_policy]" => "logstash-policy"
           } 
         }
@@ -67,7 +67,7 @@ data:
       elasticsearch {
         ilm_enabled => "true"
         ilm_rollover_alias => "%{[@metadata][target_index]}"
-        ilm_pattern => "000001"
+        ilm_pattern => "{now/d}-000001"
         ilm_policy => "%{[@metadata][target_lifecycle_policy]}"
         action => "create"
         hosts => [ "${ES_HOSTS}" ]
