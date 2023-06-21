@@ -51,14 +51,12 @@ data:
         mutate { 
           add_field => { 
             "[@metadata][target_index]" => "nginx-access-logstash"
-            "[@metadata][target_lifecycle_policy]" => "nginx-access-policy"
           } 
         }
       } else {
         mutate { 
           add_field => { 
             "[@metadata][target_index]" => "logstash" 
-            "[@metadata][target_lifecycle_policy]" => "logstash-policy"
           } 
         }
       }
@@ -69,7 +67,7 @@ data:
           ilm_enabled => "true"
           ilm_rollover_alias => "nginx-access-logstash"
           ilm_pattern => "{now/d}-000001"
-          ilm_policy => "%{[@metadata][target_lifecycle_policy]}"
+          ilm_policy => "nginx-access-policy"
           hosts => [ "${ES_HOSTS}" ]
           user => "${ES_USER}"
           password => "${ES_PASSWORD}"
@@ -81,7 +79,7 @@ data:
           ilm_enabled => "true"
           ilm_rollover_alias => "logstash"
           ilm_pattern => "{now/d}-000001"
-          ilm_policy => "%{[@metadata][target_lifecycle_policy]}"
+          ilm_policy => "logstash-policy"
           hosts => [ "${ES_HOSTS}" ]
           user => "${ES_USER}"
           password => "${ES_PASSWORD}"
