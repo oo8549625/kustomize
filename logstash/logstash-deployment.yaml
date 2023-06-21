@@ -39,9 +39,9 @@ spec:
               mountPath: /etc/logstash/certificates
               readOnly: true
           resources: 
-            limits: 
-              cpu: 4
-              memory: 4Gi
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
       volumes:
         - name: config-volume
           configMap:
