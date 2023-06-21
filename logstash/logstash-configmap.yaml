@@ -64,7 +64,8 @@ data:
     output {
       if [@metadata][target_index] == "nginx-access-logstash" {
         elasticsearch {
-          ilm_enabled => "true"
+          index => "nbcdn_access-%{+YYYY.MM.dd}"
+          ilm_enabled => "false"
           ilm_rollover_alias => "nginx-access-logstash"
           ilm_pattern => "{now/d}-000001"
           ilm_policy => "nginx-access-policy"
@@ -76,7 +77,8 @@ data:
       }
       if [@metadata][target_index] == "logstash" {
         elasticsearch {
-          ilm_enabled => "true"
+          index => "logstash-%{+YYYY.MM.dd}"
+          ilm_enabled => "false"
           ilm_rollover_alias => "logstash"
           ilm_pattern => "{now/d}-000001"
           ilm_policy => "logstash-policy"
