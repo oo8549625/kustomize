@@ -65,7 +65,6 @@ data:
     }
     output {
       elasticsearch {
-        index => "%{[@metadata][target_index]}"
         ilm_enabled => "true"
         ilm_rollover_alias => "nginx-access-searching"
         ilm_pattern => "{now/d}-000001"
