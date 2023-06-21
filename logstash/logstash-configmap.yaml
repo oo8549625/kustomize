@@ -66,8 +66,8 @@ data:
     output {
       elasticsearch {
         ilm_enabled => "true"
-        ilm_rollover_alias => "nginx-access-searching"
-        ilm_pattern => "{now/d}-000001"
+        ilm_rollover_alias => "[@metadata][target_index]"
+        ilm_pattern => "000001"
         ilm_policy => "%{[@metadata][target_lifecycle_policy]}"
         action => "create"
         hosts => [ "${ES_HOSTS}" ]
