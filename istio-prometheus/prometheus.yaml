@@ -31,6 +31,9 @@ data:
     {}
   alerts: |
     {}
+  web.yml: |
+    basic_auth_users:
+      admin:$2y$05$Mtn7sUQO1DXenRDRKbrjT.CgXMFo2SRC.XS5.wn2flzf7Y7VkbAS6
   prometheus.yml: |
     global:
       evaluation_interval: 1m
@@ -472,6 +475,7 @@ spec:
             - --web.console.templates=/etc/prometheus/consoles
             - --web.enable-lifecycle
             - --web.enable-remote-write-receiver
+            - --web.config.file=/etc/config/web.yml
           ports:
             - containerPort: 9090
           readinessProbe:
