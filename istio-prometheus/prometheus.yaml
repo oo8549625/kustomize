@@ -478,26 +478,26 @@ spec:
             - --web.config.file=/etc/config/web.yml
           ports:
             - containerPort: 9090
-          readinessProbe:
-            httpGet:
-              path: /-/ready
-              port: 9090
-              scheme: HTTP
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            timeoutSeconds: 4
-            failureThreshold: 3
-            successThreshold: 1
-          livenessProbe:
-            httpGet:
-              path: /-/healthy
-              port: 9090
-              scheme: HTTP
-            initialDelaySeconds: 30
-            periodSeconds: 15
-            timeoutSeconds: 10
-            failureThreshold: 3
-            successThreshold: 1
+          # readinessProbe:
+          #   httpGet:
+          #     path: /-/ready
+          #     port: 9090
+          #     scheme: HTTP
+          #   initialDelaySeconds: 0
+          #   periodSeconds: 5
+          #   timeoutSeconds: 4
+          #   failureThreshold: 3
+          #   successThreshold: 1
+          # livenessProbe:
+          #   httpGet:
+          #     path: /-/healthy
+          #     port: 9090
+          #     scheme: HTTP
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 15
+          #   timeoutSeconds: 10
+          #   failureThreshold: 3
+          #   successThreshold: 1
           resources:
             {}
           volumeMounts:
