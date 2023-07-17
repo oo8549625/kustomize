@@ -50,9 +50,13 @@ data:
       - targets:
         - 18.162.176.57:9308
     - job_name: prometheus
+      basic_auth:
+        username: admin
+        password: 6oSYtaQ4gfJK
       static_configs:
       - targets:
         - localhost:9090
+
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-apiservers
       kubernetes_sd_configs:
