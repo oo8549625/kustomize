@@ -33,7 +33,7 @@ data:
     {}
   web.yml: |
     basic_auth_users: 
-      admin: $2y$12$XARshlupNJ5pZldRyRzkwO2OFg/QJTwk..b292br44gIl67JM6DwG
+      admin: $2y$05$v8FUsd33JxNW4tKohdwIuetDElWzdMcAdTPpC2x9KS/m8Thc/hprq
   prometheus.yml: |
     global:
       evaluation_interval: 1m
