@@ -42,6 +42,8 @@ spec:
               subPath: index-v1.html
             - name: nginx-confd
               mountPath: /etc/nginx/conf.d
+            - name: nginx-grafana-cdn
+              mountPath: /usr/share/nginx/grafana/
       volumes:
         - name: nginx-conf
           configMap:
@@ -52,3 +54,5 @@ spec:
         - name: nginx-confd
           configMap: 
             name: nginx-confd-configmap
+        - name: nginx-grafana-cdn
+          emptyDir: {}
