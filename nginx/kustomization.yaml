@@ -1,17 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
 resources:
-  - v1-deployment.yaml
-  - v2-deployment.yaml
-  - service.yaml
-  - serviceaccount.yaml
+- v1-deployment.yaml
+- v2-deployment.yaml
+- service.yaml
+- serviceaccount.yaml
 
 configMapGenerator:
-  - files:
-      - configs/nginx.conf
-    name: nginx-config-configmap
-  - files:
-      - configs/index-v1.html
-      - configs/index-v2.html
-    name: nginx-html-configmap
-  - files:
-      - configs/conf.d/*.conf
-    name: nginx-conf.d-configmap
+- files:
+  - configs/nginx.conf
+  name: nginx-config-configmap
+- files:
+  - configs/index-v1.html
+  - configs/index-v2.html
+  name: nginx-html-configmap
+- files:
+  - configs/conf.d/default.conf
+  - configs/conf.d/grafana-cdn.conf
+  name: nginx-conf.d-configmap
