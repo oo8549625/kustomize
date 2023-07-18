@@ -40,6 +40,8 @@ spec:
             - name: nginx-html
               mountPath: /usr/share/nginx/html/index.html
               subPath: index-v1.html
+            - name: grafana
+              mountPath: /usr/share/nginx/grafana/grafnaa-oss/
       volumes:
         - name: nginx-conf
           configMap:
@@ -47,3 +49,6 @@ spec:
         - name: nginx-html
           configMap:
             name: nginx-html-configmap
+        - name: grafana-cdn
+          configMap:
+            name: nginx-grafana-cdn

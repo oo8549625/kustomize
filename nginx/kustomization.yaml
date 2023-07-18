@@ -12,3 +12,7 @@ configMapGenerator:
       - configs/index-v1.html
       - configs/index-v2.html
     name: nginx-html-configmap
+  - files:
+      - configs/grafana-oss/*
+    name: nginx-grafana-cdn
+    
