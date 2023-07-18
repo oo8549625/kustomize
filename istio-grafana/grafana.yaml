@@ -27,8 +27,6 @@ metadata:
 data:
   allow-snippet-annotations: "false"
   grafana.ini: |
-    [server]
-    cdn_url = http://nginx.default
 
   datasources.yaml: |
     apiVersion: 1
