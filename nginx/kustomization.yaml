@@ -17,4 +17,4 @@ configMapGenerator:
   name: nginx-html-configmap
 - files:
   - configs/conf.d/grafana-cdn.conf
-  name: nginx-conf.d-configmap
+  name: nginx-confd-configmap

@@ -40,7 +40,7 @@ spec:
             - name: nginx-html
               mountPath: /usr/share/nginx/html/index.html
               subPath: index-v1.html
-            - name: nginx-conf.d
+            - name: nginx-confd
               mountPath: /etc/nginx/conf.d
       volumes:
         - name: nginx-conf
@@ -49,6 +49,6 @@ spec:
         - name: nginx-html
           configMap:
             name: nginx-html-configmap
-        - name: nginx-conf.d
+        - name: nginx-confd
           configMap: 
-            name: nginx-conf.d-configmap
+            name: nginx-confd-configmap
