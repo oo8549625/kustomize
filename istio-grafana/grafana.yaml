@@ -27,21 +27,6 @@ metadata:
 data:
   allow-snippet-annotations: "false"
   grafana.ini: |
-    [analytics]
-    check_for_updates = true
-    [grafana_net]
-    url = https://grafana.net
-    [log]
-    mode = console
-    [paths]
-    data = /var/lib/grafana/
-    logs = /var/log/grafana
-    plugins = /var/lib/grafana/plugins
-    provisioning = /etc/grafana/provisioning
-    [security]
-    allow_embedding	= true
-    [auth.anonymous]
-    enabled = true
     [server]
     cdn_url = http://nginx.default
 
