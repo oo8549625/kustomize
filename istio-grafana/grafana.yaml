@@ -43,7 +43,7 @@ data:
     [auth.anonymous]
     enabled = true
     [server]
-    cdn_url = http://grafana.test.miyo
+    cdn_url = http://nginx.default
 
   datasources.yaml: |
     apiVersion: 1
