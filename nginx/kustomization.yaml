@@ -12,3 +12,6 @@ configMapGenerator:
       - configs/index-v1.html
       - configs/index-v2.html
     name: nginx-html-configmap
+  - files:
+      - configs/conf.d/*.conf
+    name: nginx-conf.d-configmap
