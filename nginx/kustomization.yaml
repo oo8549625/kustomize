@@ -15,4 +15,6 @@ configMapGenerator:
   - files:
       - configs/grafana-oss/*
     name: nginx-grafana-cdn
-    
+  - files:
+      - configs/conf.d/*
+    name: nginx-conf.d
