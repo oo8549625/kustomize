@@ -96,7 +96,7 @@ data:
     socket = /tmp/grafana.sock
 
     # CDN Url
-    cdn_url = http://172.16.4.205:32381/
+    cdn_url = 
 
     #################################### Database ############################
     [database]
