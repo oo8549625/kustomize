@@ -55,4 +55,18 @@ spec:
           configMap: 
             name: nginx-confd-configmap
         - name: nginx-grafana-cdn
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: nginx-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pv-claim
+  labels:
+    app: nginx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
