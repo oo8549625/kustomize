@@ -28,64 +28,25 @@ metadata:
 data:
   logstash.conf: |
     input {
-      beats {
-        port => 5044
-      }
-    }
-    filter {
-      if [log][file][path] =~ /\/var\/log\/containers\/apisix-.*_apisix_apisix-.*.log$/ {
-        grok {
-          match => { 
-            "message" => "%{IP:remote} %{DATA:host} %{USERNAME:user} \[%{HTTPDATE:time}\] %{HOSTNAME:http_host} \"%{WORD:method} %{URIPATHPARAM:path} HTTP/.+\" %{NUMBER:code} %{NUMBER:size} %{NUMBER:request_time} \"%{DATA:referrer}\" \"%{DATA:agent}\" %{DATA:upstream_addr} %{NUMBER:upstream_status} %{NUMBER:upstream_response_time} \"%{DATA:upstream_http_referer}\"" 
-          }
-          named_captures_only => "true"
-          overwrite => [ "agent", "host" ]
-        }
-        date {
-          match => [ "time", "dd/MMM/yyyy:HH:mm:ss Z" ]
-          target => "@timestamp"
-        }
-        prune {
-          whitelist_names => [ "@timestamp", "remote", "host", "user", "http_host", "method", "path", "code", "size", "request_time", "referrer", "agent", "upstream_addr", "upstream_status", "upstream_response_time", "upstream_http_referer" ]
-        }
-        mutate { 
-          add_field => { 
-            "[@metadata][target_index]" => "nginx-access-logstash"
-          } 
-        }
-      } else {
-        mutate { 
-          add_field => { 
-            "[@metadata][target_index]" => "logstash" 
-          } 
-        }
+      kafka {
+        topics => ["nbcdn-access"] 
+        bootstrap_servers => ["172.16.1.20:9092"]
+        group_id => "nbcdn-access"
+        consumer_threads => 1
+        auto_offset_reset => "latest"
+        type => "access"
       }
     }
     output {
-      if [@metadata][target_index] == "nginx-access-logstash" {
-        elasticsearch {
-          template_name => "template-nbcdn_access"
-          ilm_enabled => "true"
-          ilm_rollover_alias => "nbcdn_access"
-          ilm_pattern => "{now/d}-000001"
-          ilm_policy => "nginx-access-policy"
-          hosts => [ "${ES_HOSTS}" ]
-          user => "${ES_USER}"
-          password => "${ES_PASSWORD}"
-          cacert => '/etc/logstash/certificates/ca.crt'
-        }
-      }
-      if [@metadata][target_index] == "logstash" {
-        elasticsearch {
-          template_name => "logstash"
-          ilm_enabled => "true"
-          ilm_rollover_alias => "logstash"
-          ilm_pattern => "{now/d}-000001"
-          ilm_policy => "logstash-policy"
-          hosts => [ "${ES_HOSTS}" ]
-          user => "${ES_USER}"
-          password => "${ES_PASSWORD}"
-          cacert => '/etc/logstash/certificates/ca.crt'
-        }
+      elasticsearch {
+        template_name => "logstash"
+        ilm_enabled => "true"
+        ilm_rollover_alias => "logstash"
+        ilm_pattern => "{now/d}-000001"
+        ilm_policy => "logstash-policy"
+        hosts => [ "${ES_HOSTS}" ]
+        user => "${ES_USER}"
+        password => "${ES_PASSWORD}"
+        cacert => '/etc/logstash/certificates/ca.crt'
       }
     }
