@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: logstash
-          image: docker.elastic.co/logstash/logstash:8.7.0
+          image: docker.elastic.co/logstash/logstash:8.8.1
           ports:
             - name: "tcp-beats"
               containerPort: 5044
