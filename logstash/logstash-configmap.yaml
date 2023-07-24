@@ -42,7 +42,7 @@ data:
         source => "message"
       }
       date {
-        match => ["time", "yyyy-MM-ddTHH:mm:ss.SSSZ"]
+        match => ["time", "ISO8601"]
         target => "@timestamp"
       }
     }
