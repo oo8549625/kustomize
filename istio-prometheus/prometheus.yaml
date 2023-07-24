@@ -49,8 +49,6 @@ data:
       static_configs:
       - targets:
         - 172.16.1.20:9308
-        - 172.16.1.20:9309
-        - 172.16.1.20:9310
     - job_name: prometheus
       basic_auth:
         username: admin
