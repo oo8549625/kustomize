@@ -37,6 +37,15 @@ data:
         type => "access"
       }
     }
+    filter {
+      json {
+        source => "message"
+      }
+      date {
+        match => ["time", "yyyy-MM-ddTHH:mm:ss.SSSZ"]
+        target => "@timestamp"
+      }
+    }
     output {
       elasticsearch {
         template_name => "logstash"
