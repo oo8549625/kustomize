@@ -424,7 +424,7 @@ spec:
     app: prometheus
     release: prometheus
   sessionAffinity: None
-  type: "NodePort"
+  type: NodePort
 ---
 # Source: prometheus/templates/server/deploy.yaml
 apiVersion: apps/v1
