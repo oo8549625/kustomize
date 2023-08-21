@@ -62,7 +62,7 @@ data:
       honor_labels: true
       relabel_configs:
       - source_labels:  ["__address__"]
-        target_label: "ip"
+        target_label: "endpoint"
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
