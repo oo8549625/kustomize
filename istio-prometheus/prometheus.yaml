@@ -60,7 +60,9 @@ data:
         # for Netdata to uniquely identify it
         #server: ['prometheus1']
       honor_labels: true
-
+      relabel_configs:
+      - source_labels:  ["__address__"]
+        target_label: "ip"
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
