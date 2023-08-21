@@ -45,14 +45,26 @@ data:
     - /etc/config/rules
     - /etc/config/alerts
     scrape_configs:
-    - job_name: etcd
+    - job_name: 'netdata_scrape'
+      metrics_path: '/api/v1/allmetrics'
+      params:
+        # format: prometheus | prometheus_all_hosts
+        # You can use `prometheus_all_hosts` if you want Prometheus to set the `instance` to your hostname instead of IP
+        format: [prometheus_all_hosts]
+        #
+        # sources: as-collected | raw | average | sum | volume
+        # default is: average
+        #source: [as-collected]
+        #
+        # server name for this prometheus - the default is the client IP
+        # for Netdata to uniquely identify it
+        #server: ['prometheus1']
+      honor_labels: true
+
       static_configs:
-      - targets:
-        - 134.122.200.170:2379
-    - job_name: kafka_exporter
-      static_configs:
-      - targets:
-        - 172.16.1.20:9308
+        - targets: ['172.16.4.205:19999']
+        - targets: ['172.16.4.53:19999']
+        - targets: ['172.16.3.80:19999']
     - job_name: prometheus
       basic_auth:
         username: admin
