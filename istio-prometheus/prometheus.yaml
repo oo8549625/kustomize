@@ -63,9 +63,8 @@ data:
       relabel_configs:
         - source_labels: ["__address__"]
           target_label: "endpoint"
-        - source_labels: ["family"]
-          regex: (\d+)
-          action: drop
+        - action: labeldrop
+          regex: family
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
