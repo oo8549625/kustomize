@@ -63,9 +63,13 @@ data:
       relabel_configs:
         - source_labels: ["__address__"]
           target_label: "endpoint"
-        - action: labelmap
-          regex: "(family)"
-          replacement: "core_dns_$1"
+      metric_relabel_configs:
+        - source_labels: ["family"]
+          separator: ;
+          regex: (.+)
+          replacement: $1
+          target_label: coredns_family
+          action: replace
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
