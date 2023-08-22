@@ -67,6 +67,7 @@ data:
         - source_labels: [family]
           regex: coredns_dns
           action: drop
+          target_label: coredns_family
         - action: labelmap
           regex: (.*)
           replacement: $1
