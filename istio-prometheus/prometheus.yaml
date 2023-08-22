@@ -63,7 +63,7 @@ data:
       relabel_configs:
         - source_labels: ["__address__"]
           target_label: "endpoint"
-      metric_relabel_configs:
+          action: replace
         - action: labelmap
           regex: (.+)
       static_configs:
