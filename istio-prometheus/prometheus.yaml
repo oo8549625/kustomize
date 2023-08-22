@@ -65,7 +65,7 @@ data:
           target_label: "endpoint"
       metric_relabel_configs:
         - source_labels: ["family"]
-          action: drop
+          action: labeldrop
           regex: coredns_dns
         - action: labelmap
           regex: (.*)
