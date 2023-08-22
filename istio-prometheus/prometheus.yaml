@@ -69,7 +69,7 @@ data:
           regex: (.+)
           replacement: $1
           target_label: coredns_family
-          action: replace
+          action: labelmap
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
