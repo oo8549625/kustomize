@@ -65,7 +65,7 @@ data:
           target_label: "endpoint"
       metric_relabel_configs:
         - action: labelmap
-          regex: (family)
+          regex: (.*)
           replacement: test_$1
       static_configs:
         - targets: ['172.16.4.205:19999']
