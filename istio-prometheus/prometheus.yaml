@@ -69,9 +69,9 @@ data:
           target_label: "tmp_family"
           regex: (\d+)
           replacement: $1
-          action: drop
-        # - action: labeldrop
-        #   regex: (family)
+          action: replace
+        - action: labeldrop
+          regex: (family)
         # - source_labels: ["tmp_family"]
         #   target_label: "family"
         #   regex: (.+)
