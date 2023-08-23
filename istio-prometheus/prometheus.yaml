@@ -64,8 +64,16 @@ data:
         - source_labels: ["__address__"]
           target_label: "endpoint"
           action: replace
+      metric_relabel_configs:
         - source_labels: ["family"]
           target_label: "test_family"
+          regex: (.+)
+          replacement: $1
+          action: replace
+        - action: labeldrop
+          regex: (family)
+        - source_labels: ["test_family"]
+          target_label: "family"
           regex: (.+)
           replacement: $1
           action: replace
