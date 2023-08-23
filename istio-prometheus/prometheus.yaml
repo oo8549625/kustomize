@@ -67,7 +67,7 @@ data:
       metric_relabel_configs:
         - source_labels: ["family"]
           target_label: "tmp_abc"
-          regex: (\d+)
+          regex: ([0-9]+)
           replacement: $1
           action: replace
         - action: labelmap
