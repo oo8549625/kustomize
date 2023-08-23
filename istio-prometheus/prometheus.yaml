@@ -67,11 +67,17 @@ data:
       metric_relabel_configs:
         - source_labels: ["family"]
           target_label: "tmp_abc"
-          regex: (\w+)
+          regex: (\d+)
           replacement: $1
           action: replace
-        - action: labeldrop
+        - action: labelmap
           regex: (family)
+          replacement: tmp_$1
+        - action: labeldrop
+          regex: (^family)
+        - action: labelmap
+          regex: tmp_(family)
+          replacement: $1
         # - source_labels: ["tmp_family"]
         #   target_label: "family"
         #   regex: (.+)
