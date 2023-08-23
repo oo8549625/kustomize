@@ -71,7 +71,7 @@ data:
           replacement: $1
           action: replace
         - action: labeldrop
-          regex: (family)
+          regex: (^family)
         # - source_labels: ["tmp_family"]
         #   target_label: "family"
         #   regex: (.+)
