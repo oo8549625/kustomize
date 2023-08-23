@@ -65,21 +65,16 @@ data:
           target_label: "endpoint"
           action: replace
       metric_relabel_configs:
-        - source_labels: ["family"]
-          target_label: "tmp_abc"
-          regex: ([0-9]+)
-          replacement: $1
-          action: replace
         - action: labelmap
           regex: (family)
           replacement: tmp_$1
         - action: labeldrop
-          regex: (^family)
-        - source_labels: ["tmp_family"]
-          target_label: "family"
-          regex: (.+)
+          regex: (^family$)
+        - action: labelmap
+          regex: tmp_(family)
           replacement: $1
-          action: replace
+        - action: labeldrop
+          regex: (^tmp_family$)
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
