@@ -70,8 +70,8 @@ data:
           regex: (\d+)
           replacement: $1
           action: replace
-        - action: labeldrop
-          regex: (^family)
+        # - action: labeldrop
+        #   regex: (^family)
         # - source_labels: ["tmp_family"]
         #   target_label: "family"
         #   regex: (.+)
