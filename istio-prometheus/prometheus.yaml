@@ -64,9 +64,11 @@ data:
         - source_labels: ["__address__"]
           target_label: "endpoint"
           action: replace
-      metric_relabel_configs:
-        - action: labeldrop
-          regex: (family)
+        - source_labels: ["family"]
+          target_label: "family"
+          regex: (.+)
+          replacement: $1
+          action: replace
       static_configs:
         - targets: ['172.16.4.205:19999']
         - targets: ['172.16.4.53:19999']
