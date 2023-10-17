@@ -240,6 +240,8 @@ data:
       send:
       - app-sync-succeeded
       when: app.status.operationState.phase in ['Succeeded']
+  context: |
+    argocdUrl: https://argocd.test.miyo
   service.telegram: |
     token: $telegram-token
   subscriptions: |
