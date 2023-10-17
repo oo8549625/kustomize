@@ -222,7 +222,7 @@ data:
     token: $telegram-token
   subscriptions: |
     - recipients
-        - telegram: -928327341
+        - telegram:-928327341
       triggers:
         - on-deployed
 kind: ConfigMap
