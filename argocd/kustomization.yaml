@@ -1,4 +1,4 @@
 resources:
-  - argocd-deployment.yaml
+  - argocd-notifications-v1.0.2-install.yaml
 patchesStrategicMerge:
-  - argocd-cmd-params-cm.yaml
+  - argocd-notifications-catalog-v1.0.2-install.yaml
