@@ -241,9 +241,3 @@ metadata:
 stringData:
   telegram-token: 6537683421:AAH6DxcU3W5EcoFP86V8b4cybjIDtnRo7yw
 type: Opaque
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.telegram: -928327341
