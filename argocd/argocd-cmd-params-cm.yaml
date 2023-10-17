@@ -235,12 +235,12 @@ data:
     - recipients
       - telegram:-928327341
       triggers:
-      - on-deployed
-      - on-health-degraded
-      - on-sync-failed
-      - on-sync-running
-      - on-sync-status-unknown
-      - on-sync-succeeded
+        - on-deployed
+        - on-health-degraded
+        - on-sync-failed
+        - on-sync-running
+        - on-sync-status-unknown
+        - on-sync-succeeded
 kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
