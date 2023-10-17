@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.telegram: -928327341
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/oo8549625/kustomize'
+    path: argocd
+    targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
