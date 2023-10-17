@@ -220,16 +220,16 @@ data:
       when: app.status.operationState.phase in ['Succeeded']
   service.telegram: |
     token: $telegram-token
-  subscriptions: |
-    - recipients
-        - telegram:-928327341
-      triggers:
-        - on-deployed
-        - on-health-degraded
-        - on-sync-failed
-        - on-sync-running
-        - on-sync-status-unknown
-        - on-sync-succeeded
+  # subscriptions: |
+  #   - recipients
+  #       - telegram:-928327341
+  #     triggers:
+  #       - on-deployed
+  #       - on-health-degraded
+  #       - on-sync-failed
+  #       - on-sync-running
+  #       - on-sync-status-unknown
+  #       - on-sync-succeeded
 kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
@@ -241,3 +241,9 @@ metadata:
 stringData:
   telegram-token: 6537683421:AAH6DxcU3W5EcoFP86V8b4cybjIDtnRo7yw
 type: Opaque
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.telegram: -928327341
