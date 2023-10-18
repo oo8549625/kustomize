@@ -26,7 +26,10 @@ data:
     email:
       subject: New version of an application {{.app.metadata.name}} is up and running.
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application *{{.app.metadata.name}}* is now running new version of deployments manifests *{{.app.status.sync.revision}}*.
+      Status: ✅
+      Application: {{.app.metadata.name}}
+      Message: Running new version.
+      Version: {{.app.status.sync.revision}}
     slack:
       attachments: |
         [{
@@ -64,8 +67,10 @@ data:
     email:
       subject: Application {{.app.metadata.name}} has degraded.
     message: |
-      {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
-      Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
+      Status: ❌
+      Application: {{.app.metadata.name}}
+      Message: Application has degreaded.
+      Details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
     slack:
       attachments: |-
         [{
