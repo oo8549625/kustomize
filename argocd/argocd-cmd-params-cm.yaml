@@ -275,13 +275,9 @@ data:
     argocdUrl: http://argocd.test.miyo
   service.telegram: |
     token: $telegram-token
-  # subscriptions: |
-  #   - recipients:
-  #     - telegram:-928327341
-  #     triggers:
-  #       - on-deployed
-  #       - on-health-degraded
-  #       - on-sync-failed
-  #       - on-sync-running
-  #       - on-sync-status-unknown
-  #       - on-sync-succeeded
+  subscriptions: |
+    - recipients:
+      - telegram:-928327341
+      triggers:
+        - on-deployed
+        - on-health-degraded
