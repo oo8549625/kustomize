@@ -6,9 +6,8 @@ apisix:
   enable_dev_mode: false # Sets nginx worker_processes to 1 if set to true
   enable_reuseport: true # Enable nginx SO_REUSEPORT switch if set to true.
   enable_ipv6: true
-  config_center:
-    etcd # etcd: use etcd to store the config value
-    # yaml: fetch the config value from local yaml file `/your_path/conf/apisix.yaml`
+  config_center: etcd # etcd: use etcd to store the config value
+  # yaml: fetch the config value from local yaml file `/your_path/conf/apisix.yaml`
 
   #proxy_protocol:                 # Proxy Protocol configuration
   #  listen_http_port: 9181        # The port with proxy protocol for http, it differs from node_listen and port_admin.
@@ -142,7 +141,7 @@ nginx_config: # config for render the template to genarate nginx.conf
 etcd:
   host: # it's possible to define multiple etcd hosts addresses of the same etcd cluster.
     - "http://apisix-etcd.apisix.svc.cluster.local:2379" # multiple etcd address
-  prefix: "/apisixtwo" # apisix configurations prefix
+  prefix: "/apisix2" # apisix configurations prefix
   timeout: 30 # 30 seconds
   # user: root                     # root username for etcd
   # password: 5tHkHhYkjr6cQY        # root password for etcd
