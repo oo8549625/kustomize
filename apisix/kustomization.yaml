@@ -3,9 +3,14 @@ kind: Kustomization
 
 configMapGenerator:
   - files:
-      - config.yaml
+      - apisix.conf.yaml
     name: apisix
+  - files:
+      - apisix-dashboard.conf.yaml
+    name: apisix-dashboard
 
 resources:
-  - daemonset.yaml
-  - service.yaml
+  - apisix-daemonset.yaml
+  - apisix-service.yaml
+  - apisix-dashboard-deployment.yaml
+  - apisix-dashboard-service.yaml

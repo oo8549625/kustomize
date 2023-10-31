@@ -50,7 +50,7 @@ spec:
               mountPath: /etc/localtime
             - name: apisix-config
               mountPath: /usr/local/apisix/conf/config.yaml
-              subPath: config.yaml
+              subPath: apisix.conf.yaml
       volumes:
         - name: localtime
           hostPath:
