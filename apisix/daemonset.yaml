@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: apisix
+  labels:
+    app.iyes.dev/name: apisix
+spec:
+  selector:
+    matchLabels:
+      app.iyes.dev/name: apisix
+  template:
+    metadata:
+      labels:
+        app.iyes.dev/name: apisix
+    spec:
+      containers:
+        - name: apisix
+          image: apache/apisix:3.6.0-debian
+          ports:
+            - name: http
+              containerPort: 9080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "220Mi"
+            limits:
+              cpu: "0.5"
+              memory: "614Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 9080
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /apisix/status
+              port: 9080
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: localtime
+              mountPath: /etc/localtime
+            - name: apisix-config
+              mountPath: /usr/local/apisix/conf/config.yaml
+              subPath: apisix.yaml
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+        - name: apisix-config
+          configMap:
+            name: apisix
+      restartPolicy: Always
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
