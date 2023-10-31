@@ -138,10 +138,10 @@ nginx_config:                     # config for render the template to genarate n
     #  ipc_shared_dict: 100m        # custom shared cache, format: `cache-key: cache-size`
 
 etcd:
-  host:                           # it's possible to define multiple etcd hosts addresses of the same etcd cluster.
-    - "http://apisix-etcd.apisix.svc.cluster.local:2379"     # multiple etcd address
-  prefix: "/apisix2"               # apisix configurations prefix
-  timeout: 30                     # 30 seconds
+  host:
+    - "http://apisix-etcd.apisix.svc.cluster.local:2379"
+  prefix: "/apisix"     # apisix configurations prefix
+  timeout: 30   # seconds
   # user: root                     # root username for etcd
   # password: 5tHkHhYkjr6cQY        # root password for etcd
 #eureka:
