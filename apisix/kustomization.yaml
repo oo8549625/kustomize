@@ -8,9 +8,15 @@ configMapGenerator:
   - files:
       - apisix-dashboard.conf.yaml
     name: apisix-dashboard
+  - files:
+      - etcd.conf.yaml
+    name: etcd
 
 resources:
   - apisix-daemonset.yaml
   - apisix-service.yaml
   - apisix-dashboard-deployment.yaml
   - apisix-dashboard-service.yaml
+  - etcd-service.yaml
+  - etcd-deployment.yaml
+  - etcd-pvc.yaml

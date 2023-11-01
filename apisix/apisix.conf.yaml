@@ -684,7 +684,7 @@ deployment:                    # Deployment configurations
 
   etcd:
     host:                         # Set etcd address(es) in the same etcd cluster.
-      - "http://apisix-etcd.apisix.svc.cluster.local:2379"   # If TLS is enabled for etcd, use https://127.0.0.1:2379.
+      - "http://etcd.apisix2.svc.cluster.local:2379"   # If TLS is enabled for etcd, use https://127.0.0.1:2379.
     prefix: /apisix2              # Set etcd prefix.
     timeout: 30                   # Set timeout in seconds.
     # resync_delay: 5             # Set resync time in seconds after a sync failure.
