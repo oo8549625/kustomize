@@ -13,10 +13,10 @@ spec:
       labels:
         app.iyes.dev/name: apisix
     spec:
-      securityContext:
-        runAsUser: 0
-      hostNetwork: false
-      dnsPolicy: ClusterFirstWithHostNet
+      # securityContext:
+      #   runAsUser: 0
+      # hostNetwork: true
+      # dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: apisix
           image: apache/apisix:3.6.0-debian
