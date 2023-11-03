@@ -21,7 +21,7 @@
 apisix:
   # node_listen: 9080          # APISIX listening port.
   node_listen:                 # APISIX listening ports.
-    - 9080
+    - 80
   #   - port: 9081
   #     enable_http2: true     # If not set, default to `false`.
   #   - ip: 127.0.0.2          # If not set, default to `0.0.0.0`
@@ -95,7 +95,7 @@ apisix:
   ssl:
     enable: true
     listen:                                       # APISIX listening port for HTTPS traffic.
-      - port: 9443
+      - port: 443
         enable_http2: true
       # - ip: 127.0.0.3                           # If not set, default to `0.0.0.0`.
       #   port: 9445
@@ -142,7 +142,7 @@ apisix:
 nginx_config:                     # Config for render the template to generate nginx.conf
   # user: root                    # Set the execution user of the worker process. This is only
                                   # effective if the master process runs with super-user privileges.
-  error_log: logs/error.log       # Location of the error log.
+  error_log: /dev/stderr      # Location of the error log.
   error_log_level:  warn          # Logging level: info, debug, notice, warn, error, crit, alert, or emerg.
   worker_processes: auto          # Automatically determine the optimal number of worker processes based
                                   # on the available system resources.
@@ -211,7 +211,7 @@ nginx_config:                     # Config for render the template to generate n
 
   http:
     enable_access_log: true             # Enable HTTP proxy access logging.
-    access_log: logs/access.log         # Location of the access log.
+    access_log: /dev/stdout         # Location of the access log.
     access_log_buffer: 16384            # buffer size of access log.
     access_log_format: "$remote_addr - $remote_user [$time_local] $http_host \"$request\" $status $body_bytes_sent $request_time \"$http_referer\" \"$http_user_agent\" $upstream_addr $upstream_status $upstream_response_time \"$upstream_scheme://$upstream_host$upstream_uri\""
     # Customize log format: http://nginx.org/en/docs/varindex.html
