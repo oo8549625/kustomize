@@ -69,5 +69,6 @@ spec:
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
+      minReadySeconds: 3
       maxUnavailable: 0
       maxSurge: 1
