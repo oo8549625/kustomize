@@ -8,12 +8,15 @@ spec:
   template:
     spec:
       containers:
-        - name: apisix
+        - $patch: merge
+          name: apisix
           volumeMounts:
             - name: ngx-tpl-config
               mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
               subPath: ngx_tpl.lua
       volumes:
-        - name: ngx-tpl-config
+        - $patch: merge
+          name: ngx-tpl-config
           configMap:
             name: ngx-tpl
+      
