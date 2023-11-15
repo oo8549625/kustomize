@@ -11,6 +11,9 @@ configMapGenerator:
   - files:
       - etcd.conf.yaml
     name: etcd
+  - files:
+      - ngx_tpl.lua
+    name: apisix
 
 resources:
   - apisix-daemonset.yaml
@@ -20,3 +23,6 @@ resources:
   - etcd-service.yaml
   - etcd-deployment.yaml
   - etcd-pvc.yaml
+
+patchesStrategicMerge:
+  - apisix-daemonset-add-volumes.yml
