@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: gateway
+  name: apisix
   labels:
-    app.iyes.dev/name: gateway
+    app.iyes.dev/name: apisix
 spec:
   template:
     spec:
