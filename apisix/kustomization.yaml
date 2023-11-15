@@ -13,7 +13,7 @@ configMapGenerator:
     name: etcd
   - files:
       - ngx_tpl.lua
-    name: apisix
+    name: ngx-tpl
 
 resources:
   - apisix-daemonset.yaml
