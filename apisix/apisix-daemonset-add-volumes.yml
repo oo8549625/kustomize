@@ -7,6 +7,12 @@ metadata:
 spec:
   template:
     spec:
+      containers:
+        - name: apisix
+          volumeMounts:
+            - name: ngx-tpl-config
+              mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
+              subPath: ngx_tpl.lua
       volumes:
         - name: ngx-tpl-config
           configMap:
