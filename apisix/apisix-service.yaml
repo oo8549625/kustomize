@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app.iyes.dev/name: apisix
+    app.kubernetes.io/name: apisix
   externalTrafficPolicy: Local
   ports:
     - protocol: TCP

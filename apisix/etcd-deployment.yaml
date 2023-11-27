@@ -3,11 +3,11 @@ kind: Deployment
 metadata:
   name:  etcd
   labels:
-    app.iyes.dev/name: etcd
+    app.kubernetes.io/name: etcd
 spec:
   selector:
     matchLabels:
-      app.iyes.dev/name: etcd
+      app.kubernetes.io/name: etcd
   replicas: 1
   strategy:
     rollingUpdate:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app.iyes.dev/name: etcd
+        app.kubernetes.io/name: etcd
     spec:
       containers:
       - name: etcd

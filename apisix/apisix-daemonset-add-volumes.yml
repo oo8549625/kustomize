@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   name: apisix
   labels:
-    app.iyes.dev/name: apisix
+    app.kubernetes.io/name: apisix
 spec:
   template:
     spec:

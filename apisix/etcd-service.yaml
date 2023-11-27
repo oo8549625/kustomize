@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app.iyes.dev/name: etcd
+    app.kubernetes.io/name: etcd
   ports:
     - protocol: TCP
       port: 2379
