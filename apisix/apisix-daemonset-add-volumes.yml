@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   name: apisix
   labels:
-    app.kubernetes.io/name: apisix
+    app: apisix
 spec:
   template:
     spec:
