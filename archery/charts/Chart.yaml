@@ -13,10 +13,10 @@ maintainers:
 
 dependencies:
   - name: redis
-    version: ~15.7.1
+    version: ~16.11.2
     repository: https://charts.bitnami.com/bitnami
     condition: redis.embedded
   - name: mysql
-    version: ~8.8.20
+    version: ~9.1.4
     repository: https://charts.bitnami.com/bitnami
     condition: mysql.embedded
