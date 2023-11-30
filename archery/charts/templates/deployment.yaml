@@ -20,12 +20,6 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       initContainers:
-        {{- if .Values.redis.embedded }}
-        - image: busybox
-          name: init-mysql
-          imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until nslookup archery-mysql; do echo waiting for mysql; sleep 10; done;']
-        {{- end}}
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           name: init-archery
           imagePullPolicy: IfNotPresent
