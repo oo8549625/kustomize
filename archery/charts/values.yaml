@@ -135,7 +135,7 @@ resources: {}
   #  memory: 128Mi
 envs: 
   - name: CSRF_TRUSTED_ORIGINS
-    value: "https://archery.test.miyo,http://archery.test.miyo" # 不指定的情况下, 会403
+    value: "https://archery.test.miyo:32350,http://archery.test.miyo:32350" # 不指定的情况下, 会403
 
 volumeMounts:
   - name: archery-settings
