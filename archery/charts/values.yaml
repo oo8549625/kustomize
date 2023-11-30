@@ -18,7 +18,7 @@ service:
   targetPort: 9123
 
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   annotations: {}
     # kubernetes.io/ingress.class: nginx
@@ -47,7 +47,7 @@ redis:
   # embedded 为 false, 会使用外部的 redis, 下方的 redis 就不会生效
   architecture: standalone
   auth:
-    password: "REDIS_PASSWORD"
+    password: "test1234"
   master:
     persistence:
       enabled: false
@@ -64,7 +64,7 @@ mysql:
   architecture: standalone
   auth:
     database: archery
-    rootPassword: "MYSQL_ROOT_PASSWORD"	
+    rootPassword: "test1234"	
   primary:
     configuration: |-
       [mysqld]
@@ -110,7 +110,7 @@ mysql:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      size: 20Gi
+      size: 1Gi
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
       ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -118,7 +118,7 @@ mysql:
       ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
       ##   GKE, AWS & OpenStack)
       ##
-      # storageClass: "-"
+      storageClass: "local-path"
 
       # storageClass: ""
     
@@ -179,7 +179,7 @@ configMap:
   # admin password
   superuser:
     username: admin
-    password: archery # 请尽快修改
+    password: admin # 请尽快修改
     email: "archery@example.com"
   data:
     local_settings.py: |-
