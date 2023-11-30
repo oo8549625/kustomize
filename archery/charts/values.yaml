@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: hhyo/archery
-  tag: v1.9.1
+  tag: v1.10.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -238,7 +238,7 @@ configMap:
         cd $DIR
         
         #配置archery数据库的连接地址
-        monitor_db_host="archery-mysql.archery.svc.cluster.local"
+        monitor_db_host="archery-mysql"
         monitor_db_port=3306
         monitor_db_user="root"
         monitor_db_password="test1234"
