@@ -241,7 +241,7 @@ configMap:
         monitor_db_host="archery-mysql"
         monitor_db_port=3306
         monitor_db_user="root"
-        monitor_db_password="MYSQL_ROOT_PASSWORD"
+        monitor_db_password="test1234"
         monitor_db_database="archery"
         
         #实例慢日志位置
