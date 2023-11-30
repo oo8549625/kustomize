@@ -133,9 +133,9 @@ resources: {}
   # requests:
   #  cpu: 100m
   #  memory: 128Mi
-envs: []
-  # - name: value
-  #  value: xxx
+envs: 
+  - name: CSRF_TRUSTED_ORIGINS
+    value: "https://archery.test.miyo,http://archery.test.miyo" # 不指定的情况下, 会403
 
 volumeMounts:
   - name: archery-settings
