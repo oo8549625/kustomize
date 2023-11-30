@@ -64,7 +64,7 @@ mysql:
   architecture: standalone
   auth:
     database: archery
-    rootPassword: "test1234"	
+    rootPassword: "test1234"
   primary:
     configuration: |-
       [mysqld]
