@@ -41,9 +41,9 @@ spec:
           {{- end}}
           {{- if .Values.redis.embedded }}
             - name: CACHE_URL
-              value: redis://root:{{ .Values.redis.auth.rootPassword }}@{{ include "archery.fullname" . }}-redis:6379/0
+              value: redis://root:{{ .Values.redis.auth.rootPassword }}@{{ include "archery.fullname" . }}-redis-master:6379/0
             - name: DINGDING_CACHE_URL
-              value: redis://root:{{ .Values.redis.auth.rootPassword }}@{{ include "archery.fullname" . }}-redis:6379/1
+              value: redis://root:{{ .Values.redis.auth.rootPassword }}@{{ include "archery.fullname" . }}-redis-master:6379/1
           {{- else if .Values.redis.url }}
             - name: CACHE_URL
               value: {{ .Values.redis.url }}
