@@ -47,7 +47,7 @@ redis:
   # embedded 为 false, 会使用外部的 redis, 下方的 redis 就不会生效
   architecture: standalone
   auth:
-    rootPassword: "test1234"
+    password: "test1234"
   master:
     persistence:
       enabled: false
