@@ -56,14 +56,14 @@ spec:
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
-        - name: config
+        - name: apisix-config
           mountPath: /usr/local/apisix/conf/config.yaml
-          subPath: apisix.yaml
+          subPath: apisix.conf.yaml
         - name: ngx-tpl-config
           mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
           subPath: ngx_tpl.lua
       volumes:
-        - name: config
+        - name: apisix-config
           configMap:
             name: apisix
         - name: ngx-tpl-config
