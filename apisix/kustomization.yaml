@@ -16,8 +16,8 @@ configMapGenerator:
     name: ngx-tpl
 
 resources:
-  # - apisix-daemonset.yaml
-  - apisix-deployment.yaml
+  - apisix-daemonset.yaml
+  # - apisix-deployment.yaml
   - apisix-service.yaml
   - apisix-dashboard-deployment.yaml
   - apisix-dashboard-service.yaml
@@ -25,5 +25,5 @@ resources:
   - etcd-deployment.yaml
   - etcd-pvc.yaml
 
-# patchesStrategicMerge:
-#   - apisix-daemonset-add-volumes.yml
+patchesStrategicMerge:
+  - apisix-daemonset-add-volumes.yml
