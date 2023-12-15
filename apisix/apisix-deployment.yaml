@@ -19,6 +19,8 @@ spec:
       labels:
         app: apisix
     spec:
+      securityContext:
+        runAsUser: 0
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       imagePullSecrets:
