@@ -712,7 +712,7 @@ http {
 
             set $x_value "";
 
-            if ($remote_addr) {
+            if ($remote_addr != "") {
                 set $x_value "test 1234";
             }
 
