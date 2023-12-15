@@ -710,6 +710,14 @@ http {
             #proxy_set_header   X-Real-IP         $remote_addr;
             proxy_pass_header  Date;
 
+            set $x_value "";
+
+            if ($remote_addr) {
+                set $x_value "test 1234";
+            }
+
+            proxy_set_header   X-Real-IP        $x_value;
+
             ### the following x-forwarded-* headers is to send to upstream server
 
             set $var_x_forwarded_proto      $scheme;
