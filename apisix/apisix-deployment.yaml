@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apisix
+  labels:
+    app.iyes.dev/name: apisix
+spec:
+  selector:
+    matchLabels:
+      app.iyes.dev/name: apisix
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.iyes.dev/name: apisix
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: apisix
+        image: apache/apisix:3.6.0-debian
+        imagePullPolicy: Always
+        resources:
+            requests:
+              cpu: "0.1"
+              memory: "220Mi"
+            limits:
+              cpu: "0.5"
+              memory: "614Mi"
+        livenessProbe:
+          tcpSocket:
+            port: 9080
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /apisix/status
+            port: 9080
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        ports:
+        - containerPort: 9080
+          hostPort: 80
+          name: apisix
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: config
+          mountPath: /usr/local/apisix/conf/config.yaml
+          subPath: apisix.yaml
+        - name: ngx-tpl-config
+          mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
+          subPath: ngx_tpl.lua
+      volumes:
+        - name: config
+          configMap:
+            name: apisix
+        - name: ngx-tpl-config
+          configMap:
+            name: ngx-tpl
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+      restartPolicy: Always
