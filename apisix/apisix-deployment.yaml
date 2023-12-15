@@ -19,6 +19,7 @@ spec:
       labels:
         app: apisix
     spec:
+      hostNetwork: true
       imagePullSecrets:
         - name: regcred
       containers:
@@ -34,7 +35,7 @@ spec:
               memory: "614Mi"
         livenessProbe:
           tcpSocket:
-            port: 9080
+            port: 80
           initialDelaySeconds: 5
           timeoutSeconds: 5
           successThreshold: 1
@@ -43,15 +44,14 @@ spec:
         readinessProbe:
           httpGet:
             path: /apisix/status
-            port: 9080
+            port: 80
           initialDelaySeconds: 5
           timeoutSeconds: 2
           successThreshold: 1
           failureThreshold: 3
           periodSeconds: 10
         ports:
-        - containerPort: 9080
-          hostPort: 80
+        - containerPort: 80
           name: apisix
         volumeMounts:
         - name: localtime
