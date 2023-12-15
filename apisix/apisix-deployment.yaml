@@ -3,11 +3,11 @@ kind: Deployment
 metadata:
   name: apisix
   labels:
-    app.iyes.dev/name: apisix
+    app: apisix
 spec:
   selector:
     matchLabels:
-      app.iyes.dev/name: apisix
+      app: apisix
   replicas: 1
   strategy:
     rollingUpdate:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app.iyes.dev/name: apisix
+        app: apisix
     spec:
       imagePullSecrets:
         - name: regcred
