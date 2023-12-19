@@ -15,6 +15,6 @@ spec:
               subPath: ngx_tpl.lua
       volumes:
         - name: ngx-tpl-config
-          configMap:
-            name: ngx-tpl
+          secret:
+            secretName: ngx-tpl
       

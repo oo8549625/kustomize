@@ -67,11 +67,11 @@ spec:
           subPath: ngx_tpl.lua
       volumes:
         - name: apisix-config
-          configMap:
-            name: apisix
+          secret:
+            secretName: apisix
         - name: ngx-tpl-config
-          configMap:
-            name: ngx-tpl
+          secret:
+            secretName: ngx-tpl
         - name: localtime
           hostPath:
             path: /usr/share/zoneinfo/Asia/Shanghai

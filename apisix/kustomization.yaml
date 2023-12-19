@@ -3,16 +3,18 @@ kind: Kustomization
 
 configMapGenerator:
   - files:
-      - apisix.conf.yaml
-    name: apisix
-  - files:
       - apisix-dashboard.conf.yaml
     name: apisix-dashboard
   - files:
       - etcd.conf.yaml
     name: etcd
+
+secretGenerator:
   - files:
-      - ngx_tpl.lua
+    - apisix.conf.yaml
+    name: apisix
+  - files:
+    - ngx_tpl.lua
     name: ngx-tpl
 
 resources:

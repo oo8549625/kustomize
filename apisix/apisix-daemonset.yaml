@@ -64,8 +64,8 @@ spec:
           hostPath:
             path: /usr/share/zoneinfo/Asia/Shanghai
         - name: apisix-config
-          configMap:
-            name: apisix
+          secret:
+            secretName: apisix
       restartPolicy: Always
   updateStrategy:
     type: RollingUpdate
