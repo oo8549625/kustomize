@@ -23,9 +23,15 @@ spec:
           imagePullPolicy: Always
           env: 
             - name: MONGO_INITDB_ROOT_USERNAME
-              value: test
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-user
+                  key: MONGO_INITDB_ROOT_USERNAME
             - name: MONGO_INITDB_ROOT_PASSWORD
-              value: test1234
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-user
+                  key: MONGO_INITDB_ROOT_PASSWORD
           ports: 
             - containerPort: 27017
               name: mongodb
