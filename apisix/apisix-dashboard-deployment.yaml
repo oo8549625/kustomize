@@ -19,10 +19,10 @@ spec:
       labels:
         app: apisix-dashboard
     spec:
-      # securityContext:
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 1000
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 0
       imagePullSecrets:
         - name: regcred
       containers:
@@ -54,8 +54,8 @@ spec:
             - name: config
               mountPath: /usr/local/apisix-dashboard/conf/conf.yaml
               subPath: apisix-dashboard.conf.yaml
-          # securityContext:
-          #   allowPrivilegeEscalation: false
+          securityContext:
+            allowPrivilegeEscalation: false
       volumes:
         - name: localtime
           hostPath:
