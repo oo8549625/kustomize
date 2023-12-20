@@ -68,7 +68,7 @@ spec:
               mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
               subPath: ngx_tpl.lua
           securityContext:
-            allowPrivilegeEscalation: false
+            allowPrivilegeEscalation: true
       volumes:
         - name: apisix-config
           secret:
