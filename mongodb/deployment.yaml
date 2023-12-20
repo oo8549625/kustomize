@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongo-db
+spec: 
+  selector: 
+    matchLabels: 
+      app: mongo-db
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 1
+      maxUnavailable: 0
+  template: 
+    metadata: 
+      labels: 
+        app: mongo-db
+    spec: 
+      containers: 
+        - name: mongo-db
+          image: mongo:latest
+          imagePullPolicy: Always
+          env: 
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: test
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: test1234
+          ports: 
+            - containerPort: 27017
+              name: mongodb
+          volumeMounts: 
+            - name: mongodb-persistent-storage
+              mountPath: /data/db
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 1000Mi
+            requests:
+              cpu: "0.1"
+              memory: 100Mi
+      volumes: 
+        - name: mongodb-persistent-storage
+          persistentVolumeClaim: 
+            claimName: mongodb-pvc
