@@ -19,10 +19,10 @@ spec:
       labels:
         app: apisix
     spec:
-      # securityContext:
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 1000
+      securityContext:
+        runAsUser: 636
+        runAsGroup: 636
+        fsGroup: 636
       hostNetwork: false
       dnsPolicy: ClusterFirst
       imagePullSecrets:
@@ -68,7 +68,7 @@ spec:
               mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
               subPath: ngx_tpl.lua
           securityContext:
-            allowPrivilegeEscalation: true
+            allowPrivilegeEscalation: false
       volumes:
         - name: apisix-config
           secret:
