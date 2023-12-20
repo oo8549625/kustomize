@@ -5,16 +5,24 @@ metadata:
   labels:
     app: apisix
 spec:
+  selector:
+    matchLabels:
+      app: apisix
   template:
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: apisix
           volumeMounts:
             - name: ngx-tpl-config
               mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
               subPath: ngx_tpl.lua
+          securityContext:
+            allowPrivilegeEscalation: false
       volumes:
         - name: ngx-tpl-config
           secret:
             secretName: ngx-tpl
-      

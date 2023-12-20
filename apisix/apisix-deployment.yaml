@@ -20,51 +20,55 @@ spec:
         app: apisix
     spec:
       securityContext:
-        runAsUser: 0
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      hostNetwork: false
+      dnsPolicy: ClusterFirst
       imagePullSecrets:
         - name: regcred
       containers:
-      - name: apisix
-        image: apache/apisix:3.6.0-debian
-        imagePullPolicy: Always
-        resources:
-            requests:
-              cpu: "0.1"
-              memory: "220Mi"
-            limits:
-              cpu: "0.5"
-              memory: "614Mi"
-        livenessProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
-          successThreshold: 1
-          failureThreshold: 3
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /apisix/status
-            port: 80
-          initialDelaySeconds: 5
-          timeoutSeconds: 2
-          successThreshold: 1
-          failureThreshold: 3
-          periodSeconds: 10
-        ports:
-        - containerPort: 80
-          name: apisix
-        volumeMounts:
-        - name: localtime
-          mountPath: /etc/localtime
-        - name: apisix-config
-          mountPath: /usr/local/apisix/conf/config.yaml
-          subPath: apisix.conf.yaml
-        - name: ngx-tpl-config
-          mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
-          subPath: ngx_tpl.lua
+        - name: apisix
+          image: apache/apisix:3.6.0-debian
+          imagePullPolicy: Always
+          resources:
+              requests:
+                cpu: "0.1"
+                memory: "220Mi"
+              limits:
+                cpu: "0.5"
+                memory: "614Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 9080
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /apisix/status
+              port: 9080
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: apisix
+          volumeMounts:
+            - name: localtime
+              mountPath: /etc/localtime
+            - name: apisix-config
+              mountPath: /usr/local/apisix/conf/config.yaml
+              subPath: apisix.conf.yaml
+            - name: ngx-tpl-config
+              mountPath: /usr/local/apisix/apisix/cli/ngx_tpl.lua
+              subPath: ngx_tpl.lua
+          securityContext:
+            allowPrivilegeEscalation: false
       volumes:
         - name: apisix-config
           secret:

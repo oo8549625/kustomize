@@ -13,8 +13,10 @@ spec:
       labels:
         app: apisix
     spec:
-      # securityContext:
-      #   runAsUser: 0
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       # hostNetwork: true
       # dnsPolicy: ClusterFirstWithHostNet
       containers:
@@ -59,6 +61,8 @@ spec:
             - name: apisix-config
               mountPath: /usr/local/apisix/conf/config.yaml
               subPath: apisix.conf.yaml
+          securityContext:
+            allowPrivilegeEscalation: false
       volumes:
         - name: localtime
           hostPath:
