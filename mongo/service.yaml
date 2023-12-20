@@ -8,6 +8,7 @@
     ports: 
       - name: mongodb
         port: 27017
-    type: ClusterIP
+        nodePort: 31589
+    type: NodePort
     selector: 
       app: mongo-db
