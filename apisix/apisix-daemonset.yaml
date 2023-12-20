@@ -14,9 +14,9 @@ spec:
         app: apisix
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        runAsUser: 636
+        runAsGroup: 636
+        fsGroup: 636
       # hostNetwork: true
       # dnsPolicy: ClusterFirstWithHostNet
       containers:
