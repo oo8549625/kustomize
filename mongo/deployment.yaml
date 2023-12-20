@@ -19,7 +19,7 @@ spec:
     spec: 
       containers: 
         - name: mongo-db
-          image: mongo:latest
+          image: mongo:4.4.26
           imagePullPolicy: Always
           env: 
             - name: MONGO_INITDB_ROOT_USERNAME
