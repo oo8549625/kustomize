@@ -20,9 +20,8 @@ spec:
         app: etcd
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: etcd
         image: gcr.io/etcd-development/etcd:v3.4.18
