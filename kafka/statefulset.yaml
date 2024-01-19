@@ -1,0 +1,165 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka-controller
+  labels:
+    app: kafka
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kafka
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      volumes:
+        - name: kafka-configmaps
+          configMap:
+            name: kafka-controller-configuration
+            defaultMode: 420
+        - name: kafka-secret-config
+          emptyDir: {}
+        - name: kafka-config
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: scripts
+          configMap:
+            name: kafka-scripts
+            defaultMode: 493
+        - name: logs
+          emptyDir: {}
+      initContainers:
+        - name: kafka-init
+          image: docker.io/bitnami/kafka:3.5.1
+          command:
+            - /bin/bash
+          args:
+            - '-ec'
+            - |
+              /scripts/kafka-init.sh
+          env:
+            - name: BITNAMI_DEBUG
+              value: 'false'
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: KAFKA_VOLUME_DIR
+              value: /bitnami/kafka
+            - name: KAFKA_MIN_ID
+              value: '0'
+          resources: {}
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/kafka
+            - name: kafka-config
+              mountPath: /config
+            - name: kafka-configmaps
+              mountPath: /configmaps
+            - name: kafka-secret-config
+              mountPath: /secret-config
+            - name: scripts
+              mountPath: /scripts
+            - name: tmp
+              mountPath: /tmp
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            seLinuxOptions: {}
+            runAsUser: 1001
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      containers:
+        - name: kafka
+          image: docker.io/bitnami/kafka:3.5.1
+          ports:
+            - name: controller
+              containerPort: 9093
+              protocol: TCP
+            - name: client
+              containerPort: 9092
+              protocol: TCP
+            - name: interbroker
+              containerPort: 9094
+              protocol: TCP
+          env:
+            - name: BITNAMI_DEBUG
+              value: 'false'
+            - name: KAFKA_HEAP_OPTS
+              value: '-Xmx1024m -Xms1024m'
+            - name: KAFKA_KRAFT_CLUSTER_ID
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-kraft-cluster-id
+                  key: kraft-cluster-id
+          resources: 
+            requests:
+              cpu: '0.1'
+              memory: '1024Mi'
+            limits:
+              cpu: '0.5'
+              memory: '2048Mi'
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/kafka
+            - name: logs
+              mountPath: /opt/bitnami/kafka/logs
+            - name: kafka-config
+              mountPath: /opt/bitnami/kafka/config/server.properties
+              subPath: server.properties
+            - name: tmp
+              mountPath: /tmp
+          livenessProbe:
+            tcpSocket:
+              port: controller
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: controller
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 6
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            seLinuxOptions: {}
+            runAsUser: 1001
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      securityContext:
+        fsGroup: 1001
+        fsGroupChangePolicy: Always
+        seccompProfile:
+          type: RuntimeDefault
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: local-path
+        volumeMode: Filesystem
+  serviceName: kafka-controller-headless

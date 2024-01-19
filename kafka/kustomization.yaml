@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- statefulset.yaml
+- service.yaml
+- service-headless.yaml
+
+configMapGenerator:
+- files:
+  - configs/server.properties
+  name: kafka-controller-configuration
+- files:
+  - configs/kafka-init.sh
+  name: kafka-scripts
+
+secretGenerator:
+  - files:
+      - secrets/kraft-cluster-id
+    name: kafka-kraft-cluster-id

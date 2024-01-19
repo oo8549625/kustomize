@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-controller-headless
+  labels:
+    app: kafka
+spec:
+  ports:
+    - name: tcp-interbroker
+      protocol: TCP
+      port: 9094
+      targetPort: interbroker
+    - name: tcp-client
+      protocol: TCP
+      port: 9092
+      targetPort: client
+    - name: tcp-controller
+      protocol: TCP
+      port: 9093
+      targetPort: controller
+  selector:
+    app: kafka
+  clusterIP: None
+  type: ClusterIP
