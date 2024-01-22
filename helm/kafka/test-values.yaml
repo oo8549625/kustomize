@@ -191,7 +191,7 @@ listeners:
   ## @param listeners.advertisedListeners Overrides the Kafka 'advertised.listener' configuration setting.
   ## @param listeners.securityProtocolMap Overrides the Kafka 'security.protocol.map' configuration setting.
   overrideListeners: ""
-  advertisedListeners: ""
+  advertisedListeners: "CLIENT://10.102.198.17:9092,INTERNAL://advertised-address-placeholder:9094"
   securityProtocolMap: ""
 
 ## @section Kafka SASL parameters
@@ -1287,7 +1287,7 @@ service:
   ## NOTE: choose port between <30000-32767>
   ##
   nodePorts:
-    client: ""
+    client: "32000"
     external: ""
   ## @param service.sessionAffinity Control where client requests go, to the same pod or round-robin
   ## Values: ClientIP or None
@@ -1304,7 +1304,7 @@ service:
   ## e.g.:
   ## clusterIP: None
   ##
-  clusterIP: ""
+  clusterIP: "10.102.198.17"
   ## @param service.loadBalancerIP Kafka service Load Balancer IP
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
   ##
