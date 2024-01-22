@@ -351,12 +351,12 @@ data:
         kafka_conf_set "$KAFKA_CONFIG_FILE" "broker.id" "$ID"
         {{- end }}
     fi
-    # {{- if not .Values.listeners.advertisedListeners }}
+    {{%- if not .Values.listeners.advertisedListeners %}}
     replace_placeholder "advertised-address-placeholder" "${MY_POD_NAME}.{{ $fullname }}-${POD_ROLE}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}"
     if [[ "${EXTERNAL_ACCESS_ENABLED:-false}" =~ ^(yes|true)$ ]]; then
       configure_external_access
     fi
-    # {{- end }}
+    {{%- end %}}
     {{- if (include "kafka.sslEnabled" .) }}
     configure_kafka_tls
     {{- end }}
