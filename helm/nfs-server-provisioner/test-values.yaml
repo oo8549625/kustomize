@@ -38,7 +38,7 @@ service:
   externalIPs: []
 
 persistence:
-  enabled: false
+  enabled: true
 
   ## Existing Persistent Volume Claim
   ## This should be used with persistence.enabled=true
@@ -55,10 +55,10 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # storageClass: "-"
+  storageClass: "-"
 
   accessMode: ReadWriteOnce
-  size: 1Gi
+  size: 5Gi
 
 ## For creating the StorageClass automatically:
 storageClass:
