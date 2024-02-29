@@ -55,7 +55,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: "-"
+  storageClass: "local-path"
 
   accessMode: ReadWriteOnce
   size: 5Gi
