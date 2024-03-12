@@ -48,7 +48,7 @@ data:
     [FILTER]
         Name             modify
         Match            kube.*
-        Copy             kubernetes.namespace_name namespace
+        Rename           kubernetes.namespace_name namespace
         Remove_regex     ^(kubernetes|logtag|stream).*$
   output-elasticsearch.conf: |
     [OUTPUT]
