@@ -41,7 +41,7 @@ data:
     [FILTER]
         Name             record_modifier
         Match            kube.*
-        Record           namespace kubernetes.namespace_name
+        Record           namespace $kubernetes['namespace_name']
         Allowlist_key    log
         Allowlist_key    namespace
 
