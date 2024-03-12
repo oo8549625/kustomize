@@ -43,12 +43,11 @@ data:
         Match              kube.*
         Operation          lift
         Nested_under       kubernetes
-        Wildcard           namespace_name
-        
+
     [FILTER]
-        Name               record_modifier
+        Name               modify
         Match              kube.*
-        Record             namespace $namespace_name
+        Rename             namespace_name namespace
 
     [FILTER]
         Name               parser
