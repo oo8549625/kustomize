@@ -26,7 +26,7 @@ data:
         Name              tail
         Tag               kube.*
         Path              /var/log/containers/apisix-*_apisix_apisix*.log
-        Parser            docker
+        Parser            cri
 
   filter-kubernetes.conf: |
     [FILTER]
