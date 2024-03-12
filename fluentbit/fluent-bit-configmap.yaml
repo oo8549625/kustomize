@@ -44,13 +44,6 @@ data:
         key_name         log
         Parser           json
         Reserve_Data     On
-    
-    [FILTER]
-        Name             modify
-        Match            kube.*
-        Add              namespace ${kubernetes.namespace_name}
-        Remove_regex     ^(kubernetes|logtag|stream).*$
-
   output-elasticsearch.conf: |
     [OUTPUT]
         Name            stdout
