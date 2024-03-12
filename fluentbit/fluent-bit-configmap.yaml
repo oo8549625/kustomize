@@ -34,12 +34,6 @@ data:
 
   filter-kubernetes.conf: |
     [FILTER]
-        Name                parser
-        Match               kube.var.log.containers.apisix-*_apisix_apisix*
-        Key_Name            message
-        Parser              json
-        
-    [FILTER]
         Name                kubernetes
         Match               kube.*
         Kube_URL            https://kubernetes.default.svc:443
@@ -50,6 +44,10 @@ data:
         Buffer_Size         5MBz
 
   output-elasticsearch.conf: |
+    [OUTPUT]
+        Name            stdout
+        Match           *
+
     [OUTPUT]
         Name            es
         Match           kube.var.log.containers.apisix-*_apisix_apisix*
