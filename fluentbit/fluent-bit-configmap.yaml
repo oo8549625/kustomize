@@ -44,6 +44,11 @@ data:
         key_name         log
         Parser           json
         Reserve_Data     On
+    
+    [FILTER]
+        Name             modify
+        Match            kube.*
+        Remove_regex     ^(kubernetes|logtag|stream).*$
   output-elasticsearch.conf: |
     [OUTPUT]
         Name            stdout
