@@ -49,7 +49,7 @@ data:
         Name                parser
         Match               kube.var.log.containers.apisix-*_apisix_apisix*
         Key_Name            log
-        Parser              json
+        Parser              docker
 
   output-elasticsearch.conf: |
     [OUTPUT]
