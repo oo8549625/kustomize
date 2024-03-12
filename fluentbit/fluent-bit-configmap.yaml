@@ -39,9 +39,16 @@ data:
         Kube_Tag_Prefix    kube.var.log.containers.
     
     [FILTER]
+        Name               nest
+        Match              kube.*
+        Operation          lift
+        Nested_under       kubernetes
+        Wildcard           namespace_name
+        
+    [FILTER]
         Name               record_modifier
         Match              kube.*
-        Record             namespace $kubernetes['namespace_name']
+        Record             namespace $namespace_name
 
     [FILTER]
         Name               parser
