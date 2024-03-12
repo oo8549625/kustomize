@@ -44,7 +44,7 @@ data:
         Record           namespace $kubernetes['namespace_name']
         Allowlist_key    log
         Allowlist_key    namespace
-        Allowlist_key    kubernetes['namespace_name']
+        Allowlist_key    kubernetes.namespace_name
 
     [FILTER]
         Name             parser
