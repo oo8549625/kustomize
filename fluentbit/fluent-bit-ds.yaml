@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit
-        image: fluent/fluent-bit:2.0
+        image: fluent/fluent-bit
         imagePullPolicy: Always
         ports:
           - containerPort: 2020
@@ -35,7 +35,7 @@ spec:
         - name: FLUENT_ELASTICSEARCH_USER
           value: "elastic"
         - name: FLUENT_ELASTICSEARCH_PASSWORD
-          value: "10i6Dx8K8v69n5Cs1Yp3MqjR"
+          value: "S2E9Nrjmcx8Q6qc99YT5Z248"
         volumeMounts:
         - name: varlog
           mountPath: /var/log

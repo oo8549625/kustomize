@@ -5,3 +5,7 @@ resources:
   - fluent-bit-role.yaml
   - fluent-bit-service-account.yaml
   - fluent-bit-service.yaml
+
+images:
+  - name: fluent/fluent-bit
+    newTag: 2.2.2
