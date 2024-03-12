@@ -43,6 +43,13 @@ data:
         Match            kube.var.log.containers.apisix-*_apisix_apisix*
         key_name         log
         Parser           json
+        Reserve_Data     On
+    
+    [FILTER]
+        Name             modify
+        Match            kube.*
+        Add              kubernetes.namespace_name
+        Remove_regex     kubernetes*
 
   output-elasticsearch.conf: |
     [OUTPUT]
