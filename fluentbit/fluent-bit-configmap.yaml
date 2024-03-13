@@ -50,6 +50,12 @@ data:
         Rename             namespace_name namespace
 
     [FILTER]
+        Name               record_modifier
+        Match              kube.*
+        Allowlist_key      log
+        Allowlist_key      namespace
+
+    [FILTER]
         Name               parser
         Match              kube.var.log.containers.apisix-*_apisix_apisix*
         key_name           log
