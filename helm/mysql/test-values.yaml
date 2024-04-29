@@ -1136,7 +1136,7 @@ networkPolicy:
   ## @param networkPolicy.ingressNSPodMatchLabels [object] Pod labels to match to allow traffic from other namespaces
   ##
   ingressNSMatchLabels: 
-    - namespace: default
+    namespace: default
   ingressNSPodMatchLabels: {}
 ## @section Volume Permissions parameters
 ##
