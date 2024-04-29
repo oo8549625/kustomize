@@ -1114,7 +1114,25 @@ networkPolicy:
   ##                 values:
   ##                   - frontend
   ##
-  extraIngress: []
+  extraIngress:
+    - ports:
+        - port: 1234
+      from:
+        # 在有符合指定label的namespace下，並且有符合指定label的pod才可以訪問
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: devops
+          podSelector:
+            matchLabels:
+              run: mysql-client
+        # 有符合指定label的namespace下，所有pod都可以訪問
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: default
+        # 只允許當前namespace下，並且有符合指定label的pod才可以訪問
+        - podSelector:
+            matchLabels:
+              run: mysql-client
   ## @param networkPolicy.extraEgress [array] Add extra ingress rules to the NetworkPolicy
   ## e.g:
   ## extraEgress:
@@ -1135,8 +1153,7 @@ networkPolicy:
   ## @param networkPolicy.ingressNSMatchLabels [object] Labels to match to allow traffic from other namespaces
   ## @param networkPolicy.ingressNSPodMatchLabels [object] Pod labels to match to allow traffic from other namespaces
   ##
-  ingressNSMatchLabels: 
-    kubernetes.io/metadata.name: default
+  ingressNSMatchLabels: {}
   ingressNSPodMatchLabels: {}
 ## @section Volume Permissions parameters
 ##
