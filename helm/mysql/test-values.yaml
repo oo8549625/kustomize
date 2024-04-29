@@ -1094,7 +1094,7 @@ networkPolicy:
   ## When set to false, only pods with the correct client label will have network access to the ports MySQL is
   ## listening on. When true, MySQL will accept connections from any source (with the correct destination port).
   ##
-  allowExternal: true
+  allowExternal: false
   ## @param networkPolicy.allowExternalEgress Allow the pod to access any range of port and all destinations.
   ##
   allowExternalEgress: true
@@ -1136,7 +1136,7 @@ networkPolicy:
   ## @param networkPolicy.ingressNSPodMatchLabels [object] Pod labels to match to allow traffic from other namespaces
   ##
   ingressNSMatchLabels: 
-    namespace: default
+    kubesphere.io/namespace: default
   ingressNSPodMatchLabels: {}
 ## @section Volume Permissions parameters
 ##
