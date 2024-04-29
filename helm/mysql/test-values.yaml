@@ -1135,7 +1135,8 @@ networkPolicy:
   ## @param networkPolicy.ingressNSMatchLabels [object] Labels to match to allow traffic from other namespaces
   ## @param networkPolicy.ingressNSPodMatchLabels [object] Pod labels to match to allow traffic from other namespaces
   ##
-  ingressNSMatchLabels: {}
+  ingressNSMatchLabels: 
+    kubesphere.io/namespace: default
   ingressNSPodMatchLabels: {}
 ## @section Volume Permissions parameters
 ##
