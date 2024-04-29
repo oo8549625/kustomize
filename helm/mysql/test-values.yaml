@@ -1116,7 +1116,7 @@ networkPolicy:
   ##
   extraIngress:
     - ports:
-        - port: 1234
+        - port: 3306
       from:
         # 在有符合指定label的namespace下，並且有符合指定label的pod才可以訪問
         - namespaceSelector:
