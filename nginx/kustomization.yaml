@@ -6,6 +6,7 @@ resources:
 # - v2-deployment.yaml
 - service.yaml
 - pdb.yaml
+- hpa.yaml
 
 configMapGenerator:
 - files:
