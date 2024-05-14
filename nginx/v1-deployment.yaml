@@ -34,7 +34,7 @@ spec:
               memory: 64Mi
             requests:
               cpu: 50m
-              memory: 128Mi
+              memory: 16Mi
           volumeMounts:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
