@@ -12,10 +12,6 @@ spec:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    runAsNonRoot: true
   selector:
     matchLabels:
       app: nginx
@@ -26,6 +22,10 @@ spec:
         app: nginx
         version: v1
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
       containers:
         - name: nginx
           image: nginx:latest
