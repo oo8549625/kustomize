@@ -47,6 +47,9 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: nginx-cache
               mountPath: /var/cache/nginx
+            - name: nginx-pid-tmpfs
+              mountPath: /var/run/nginx.pid
+              subPath: nginx.pid
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
@@ -69,4 +72,8 @@ spec:
             name: nginx-confd-configmap
         - name: nginx-cache
           emptyDir: {}
+        - name: nginx-pid-tmpfs
+          emptyDir:
+            medium: Memory
+        
             
