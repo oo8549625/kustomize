@@ -25,14 +25,15 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
+        fsGroup: 1000
         runAsNonRoot: true
+        privileged: false
         allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: false
+        readOnlyRootFilesystem: true
+        fsGroupChangePolicy: Always
         capabilities:
-          add:
-          - NET_BIND_SERVICE
           drop:
-          - ALL
+            - ALL
       containers:
         - name: nginx
           image: nginx:latest
