@@ -12,6 +12,8 @@ spec:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+  securityContext:
+    runAsNonRoot: true
   selector:
     matchLabels:
       app: nginx
