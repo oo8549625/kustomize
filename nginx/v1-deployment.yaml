@@ -23,13 +23,7 @@ spec:
         version: v1
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
-        runAsNonRoot: true
-        privileged: false
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
       containers:
         - name: nginx
           image: nginx:latest
@@ -51,6 +45,16 @@ spec:
               subPath: index-v1.html
             - name: nginx-confd
               mountPath: /etc/nginx/conf.d
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            privileged: false
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - all
       volumes:
         - name: nginx-conf
           configMap:
