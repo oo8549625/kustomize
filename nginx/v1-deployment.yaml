@@ -32,7 +32,7 @@ spec:
         readOnlyRootFilesystem: true
         capabilities:
           drop:
-            - ALL
+          - ALL
       containers:
         - name: nginx
           image: nginx:latest
