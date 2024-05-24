@@ -47,6 +47,8 @@ spec:
               subPath: index-v1.html
             - name: nginx-confd
               mountPath: /etc/nginx/conf.d
+          securityContext:
+            allowPrivilegeEscalation: true
       volumes:
         - name: nginx-conf
           configMap:
