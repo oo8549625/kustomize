@@ -30,7 +30,6 @@ spec:
         privileged: false
         allowPrivilegeEscalation: false
         readOnlyRootFilesystem: true
-        fsGroupChangePolicy: Always
         capabilities:
           drop:
             - ALL
