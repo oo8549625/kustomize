@@ -48,8 +48,7 @@ spec:
             - name: nginx-cache
               mountPath: /var/cache/nginx
             - name: nginx-pid-tmpfs
-              mountPath: /var/run/nginx.pid
-              subPath: nginx.pid
+              mountPath: /var/run
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
