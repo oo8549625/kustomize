@@ -19,3 +19,6 @@ configMapGenerator:
 - files:
   - configs/conf.d/default.conf
   name: nginx-confd-configmap
+
+patchesStrategicMerge:
+- configmap.yaml
