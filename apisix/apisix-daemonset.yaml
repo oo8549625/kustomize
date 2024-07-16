@@ -21,7 +21,7 @@ spec:
       # dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: apisix
-          image: apache/apisix:3.9.0
+          image: apache/apisix:3.9.1-debian
           ports:
             - name: http
               containerPort: 9080
