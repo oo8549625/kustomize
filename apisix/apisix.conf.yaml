@@ -96,7 +96,7 @@ apisix:
     enable: true
     listen:                                       # APISIX listening port for HTTPS traffic.
       - port: 9443
-        enable_http2: true
+        enable_http3: false
       # - ip: 127.0.0.3                           # If not set, default to `0.0.0.0`.
       #   port: 9445
       #   enable_http2: true
