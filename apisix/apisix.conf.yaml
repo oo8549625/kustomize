@@ -209,8 +209,7 @@ nginx_config:                     # Config for render the template to generate n
     enable_access_log: true             # Enable HTTP proxy access logging.
     access_log: /dev/stdout        # Location of the access log.
     access_log_buffer: 16384            # buffer size of access log.
-    access_log_format: |
-      '{"time_local":"$time_local","client":"$remote_addr","x_forwarded_for":"$http_x_forwarded_for","x_real_ip":"$http_x_real_ip","host":"$http_host","request_uri":"$request_uri","server_protocol":"$server_protocol","request_method":"$request_method","status":"$status","body_bytes_sent":"$body_bytes_sent","request_time":"$request_time","http_referer":"$http_referer","http_user_agent":"$http_user_agent","upstream":"$upstream_addr","upstream_status":"$upstream_status","upstream_response_time":"$upstream_response_time","upstream_response_length":"$upstream_response_length"}'
+    access_log_format: '{"time_local":"$time_local","client":"$remote_addr","x_forwarded_for":"$http_x_forwarded_for","x_real_ip":"$http_x_real_ip","host":"$http_host","request_uri":"$request_uri","server_protocol":"$server_protocol","request_method":"$request_method","status":"$status","body_bytes_sent":"$body_bytes_sent","request_time":"$request_time","http_referer":"$http_referer","http_user_agent":"$http_user_agent","upstream":"$upstream_addr","upstream_status":"$upstream_status","upstream_response_time":"$upstream_response_time","upstream_response_length":"$upstream_response_length"}'
     # Customize log format: http://nginx.org/en/docs/varindex.html
     access_log_format_escape: json   # Escape default or json characters in variables.
     keepalive_timeout: 60s              # Set the maximum time for which TCP connection keeps alive.
