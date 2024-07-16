@@ -120,3 +120,4 @@ plugins: # plugin list (sorted in alphabetical order)
   - zipkin
   - server-info
   - traffic-split
+  - elasticsearch-logger
