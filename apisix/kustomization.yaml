@@ -27,5 +27,5 @@ resources:
   - etcd-deployment.yaml
   - etcd-pvc.yaml
 
-patchesStrategicMerge:
-  - apisix-daemonset-add-volumes.yml
+# patchesStrategicMerge:
+#   - apisix-daemonset-add-volumes.yml
