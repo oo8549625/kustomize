@@ -54,7 +54,7 @@ spec:
             failureThreshold: 3
             periodSeconds: 10
           ports:
-            - containerPort: 9080
+            - containerPort: 80
               name: apisix
           volumeMounts:
             - name: localtime
