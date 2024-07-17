@@ -18,8 +18,8 @@ secretGenerator:
     name: ngx-tpl
 
 resources:
-  - apisix-daemonset.yaml
-  # - apisix-deployment.yaml
+  # - apisix-daemonset.yaml
+  - apisix-deployment.yaml
   - apisix-service.yaml
   - apisix-dashboard-deployment.yaml
   - apisix-dashboard-service.yaml
