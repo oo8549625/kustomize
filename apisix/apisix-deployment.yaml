@@ -23,10 +23,8 @@ spec:
         runAsUser: 636
         runAsGroup: 636
         fsGroup: 636
-      hostNetwork: false
-      dnsPolicy: ClusterFirst
-      imagePullSecrets:
-        - name: regcred
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: apisix
           image: apache/apisix:3.6.0-debian
